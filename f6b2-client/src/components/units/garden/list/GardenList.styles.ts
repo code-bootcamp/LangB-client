@@ -8,6 +8,8 @@ export const Wrapper = styled.div`
 
   // test
   background-color: #d4e8ea;
+  padding-top: 100px;
+  /* default 80px */
 `;
 
 export const GardenListBox = styled.main`

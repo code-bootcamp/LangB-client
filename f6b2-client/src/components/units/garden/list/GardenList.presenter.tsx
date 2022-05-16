@@ -20,22 +20,23 @@ import {
   WriterProfile,
 } from './GardenList.styles';
 import { MdQuestionAnswer, MdThumbUp } from 'react-icons/md';
+import GardenBestList from '../bestList/GardenBestList.container';
 
 export default function GardenListUI(props) {
   return (
     <Wrapper>
+      <GardenBestList />
+      {/* {props.data?.fetchBoards.map((el, index) => ( */}
       <GardenListBox>
         <WriterInfoBox>
           <WriterProfile />
           <WriterInfo>
-            <WriterName>Jay</WriterName>
-            <CreatedAt>2022.05.12</CreatedAt>
+            <WriterName></WriterName>
+            <CreatedAt></CreatedAt>
           </WriterInfo>
         </WriterInfoBox>
         <ContentsBox>
-          <Contents>
-            I have a question to you guys! What’s this flower called in Korean?
-          </Contents>
+          <Contents></Contents>
           <ContentsTranslateBox>
             {/* 번역API 버튼 자리? */}
             <ContentsTranslate>
@@ -56,7 +57,7 @@ export default function GardenListUI(props) {
             )}
             <LikeAndCommentCount>
               <Like>
-                <MdThumbUp /> 0
+                <MdThumbUp />
               </Like>
               <CommentCount>
                 <MdQuestionAnswer /> 1
@@ -69,6 +70,7 @@ export default function GardenListUI(props) {
         {/* GardenCommentList */}
         {props.commentListVal === true ? <GardenCommentList /> : <div></div>}
       </GardenListBox>
+      {/* ))} */}
     </Wrapper>
   );
 }
