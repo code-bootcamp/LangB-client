@@ -1,8 +1,0 @@
-schema: https://team04backend.shop/graphql
-generates:
-  ./src/commons/types/generated/types.ts:
-    plugins:
-      - typescript
-    config:
-      typesPrefix: I
-    #   fetcher: fetch
