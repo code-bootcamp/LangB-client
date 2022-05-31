@@ -37,17 +37,9 @@ interface ILayoutProps {
 export default function Layout(props: ILayoutProps) {
   const router = useRouter();
 
-  const BODY_YELLOW = [
-    // Body 배경 다른 페이지 페이지 사용법 예시
-    '/signin',
-    '/signup',
-    '/profile/[id]',
-  ];
+  const BODY_YELLOW = ['/signin', '/signup', '/profile/[id]'];
 
-  const HIDDEN_HEADER = [
-    // Body 배경 다른 페이지 페이지 사용법 예시
-    '/',
-  ];
+  const HIDDEN_HEADER = ['/'];
 
   const isBodyColor = BODY_YELLOW.includes(router.pathname);
   const isHiddenHeader = HIDDEN_HEADER.includes(router.pathname);

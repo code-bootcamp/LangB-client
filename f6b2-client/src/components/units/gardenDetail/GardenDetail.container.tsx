@@ -11,7 +11,7 @@ import { useRecoilState } from 'recoil';
 
 export default function GardenDetail() {
   const router = useRouter();
-  // 글 가져오기
+
   const { data } = useQuery(FETCH_BOARD, {
     variables: { boardId: router.query.boardId },
   });
@@ -28,14 +28,14 @@ export default function GardenDetail() {
 
   const [commentListVal, setCommentListVal] = useState([false]);
   // 댓글 펼치기
-  const onClickCommentListBtn = (index) => (event) => {
+  const onClickCommentListBtn = (index: any) => (event: any) => {
     const newCommentOpen = [...commentListVal];
     newCommentOpen[index] = !commentListVal[index];
     setCommentListVal(newCommentOpen);
   };
 
   // 좋아요 클릭
-  const onClickLikeBoard = async (event) => {
+  const onClickLikeBoard = async (event: any) => {
     try {
       await likeBoard({
         variables: {

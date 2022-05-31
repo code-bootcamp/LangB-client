@@ -35,6 +35,7 @@ export default function PaymentComplete() {
   const paycontainer = useRef();
   useEffect(() => {
     lottie.loadAnimation({
+      // @ts-ignore
       container: paycontainer.current,
       renderer: 'svg',
       loop: true,
@@ -49,7 +50,10 @@ export default function PaymentComplete() {
 
   return (
     <WrapperCol>
-      <Welcome ref={paycontainer}></Welcome>
+      <Welcome
+        // @ts-ignore
+        ref={paycontainer}
+      ></Welcome>
       <ButtonMovetoSignin onClick={onClickComplete}>
         COMPLETE
       </ButtonMovetoSignin>

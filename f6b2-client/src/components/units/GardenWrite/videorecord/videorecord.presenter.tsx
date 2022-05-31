@@ -25,7 +25,7 @@ export const WrapperRow = styled.div`
 
 import VideoRecorder from 'react-video-recorder';
 import VideoUpload from '../../../commons/videoupload';
-export default function VideoRecordUI(props) {
+export default function VideoRecordUI(props: any) {
   return (
     <>
       <WrapperCol>
