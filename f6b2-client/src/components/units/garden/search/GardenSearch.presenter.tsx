@@ -38,7 +38,6 @@ import {
   MdKeyboardArrowDown,
 } from "react-icons/md";
 import GardenBestList from "../bestList/GardenBestList.container";
-// 날짜 데이터 yyyy-mm-dd 로 변경 모듈
 
 import { motion } from "framer-motion";
 import { getDate } from "../../../../commons/libraries/utils";
@@ -60,192 +59,189 @@ export default function GardenSearchUI(props: any) {
             Search Result for "{props.searchKeyword}"
           </div>
           <>
-            {props.searchBoard?.searchBoardContent.map((el, index) => (
-              <div key={index}>
-                <GardenListBox>
-                  <WriterInfoBox>
-                    {el.writer.image.includes("http") ? (
-                      <WriterProfile
-                        onClick={props.onClickUserProfile}
-                        id={el.writer.id}
-                        src={el.writer.image}
-                      />
-                    ) : (
-                      <WriterProfile
-                        onClick={props.onClickUserProfile}
-                        id={el.writer.id}
-                        src={"/image/defaultuser.png"}
-                      />
-                    )}
-                    <WriterInfo>
-                      <NameRow>
-                        <DivTmp>
-                          <WriterName>{el.writer.name}</WriterName>
-                          <CreatedAt>{getDate(el.createdAt)}</CreatedAt>
-                        </DivTmp>
-                        {props.savedInfo?.fetchSavedBoards.filter(
-                          (el2) => el2.board.id === el.id
-                        ).length > 0 ? (
-                          props.savedInfo?.fetchSavedBoards.map((el3) =>
-                            el3.board.id === el.id ? (
-                              el3.isSaved ? (
-                                <motion.div
-                                  whileHover={{ scale: 1.25 }}
-                                  transition={{ duration: 0.3 }}
-                                  key={String(uuidv4())}
-                                >
-                                  <MdBookmark
-                                    size={"22"}
-                                    onClick={() => props.onClickSaved(el)}
-                                    style={{
-                                      cursor: "pointer",
-                                      color: "#FFB950",
-                                    }}
-                                  />
-                                </motion.div>
-                              ) : (
-                                <motion.div
-                                  whileHover={{ scale: 1.25 }}
-                                  transition={{ duration: 0.3 }}
-                                  key={String(uuidv4())}
-                                >
-                                  <MdBookmarkBorder
-                                    size={"22"}
-                                    onClick={() => props.onClickSaved(el)}
-                                    style={{
-                                      cursor: "pointer",
-                                      color: "#FFB950",
-                                    }}
-                                  />
-                                </motion.div>
-                              )
-                            ) : (
-                              ""
-                            )
-                          )
-                        ) : (
-                          <motion.div
-                            whileHover={{ scale: 1.4 }}
-                            transition={{ duration: 0.3 }}
-                            key={String(uuidv4())}
-                          >
-                            <MdBookmarkBorder
-                              size={"22"}
-                              onClick={() => props.onClickSaved(el)}
-                              style={{
-                                cursor: "pointer",
-                                color: "#FFB950",
-                              }}
-                            />
-                          </motion.div>
-                        )}
-                      </NameRow>
-                    </WriterInfo>
-                  </WriterInfoBox>
-                  <ContentsBox>
-                    <Contents>{el.content}</Contents>
-                    <ContentsTranslateBox>
-                      {/* 번역API 버튼 자리? */}
-                      <TranslateGarden
-                        content={el.content}
-                        myLang={el.writer.myLang}
-                      />
-                    </ContentsTranslateBox>
-                    {/* 캐러셀 */}
-                    <GardenImg boardId={el.id} video={el.video} />
-                    {/* <ContentsImg /> */}
-                    <LikeAndCommentCountBox>
-                      {/* <div></div> */}
-                      <LikeAndCommentCount>
-                        <CommentCount
-                          onClick={props.onClickCommentListBtn(index)}
-                          id={el.id}
-                        >
-                          <motion.div
-                            whileHover={{ scale: 1.4 }}
-                            transition={{ duration: 0.3 }}
-                            key={String(uuidv4())}
-                          >
-                            <CommentIcon size={"13"} />{" "}
-                          </motion.div>
-                          <SpanCommentCount>
-                            {el.commentsCount}
-                          </SpanCommentCount>
-                        </CommentCount>
-
-                        {props.savedInfo?.fetchSavedBoards.filter(
-                          (element) => element.board.id === el.id
-                        ).length > 0 ? (
-                          props.savedInfo?.fetchSavedBoards.map((element2) =>
-                            element2.board.id === el.id ? (
-                              element2.isLiked ? (
-                                <Like
-                                  onClick={props.onClickLikeBoard}
-                                  id={el.id}
-                                >
-                                  <WrapperIconRow>
-                                    <motion.div
-                                      whileHover={{ scale: 1.4 }}
-                                      transition={{ duration: 0.3 }}
-                                      key={String(uuidv4())}
-                                    >
-                                      <LikeOn />
-                                    </motion.div>
-                                  </WrapperIconRow>
-                                  {el.likes}
-                                </Like>
-                              ) : (
-                                <Like
-                                  onClick={props.onClickLikeBoard}
-                                  id={el.id}
-                                >
+            {props.searchBoard?.searchBoardContent.map(
+              (el: any, index: any) => (
+                <div key={index}>
+                  <GardenListBox>
+                    <WriterInfoBox>
+                      {el.writer.image.includes("http") ? (
+                        <WriterProfile
+                          onClick={props.onClickUserProfile}
+                          id={el.writer.id}
+                          src={el.writer.image}
+                        />
+                      ) : (
+                        <WriterProfile
+                          onClick={props.onClickUserProfile}
+                          id={el.writer.id}
+                          src={"/image/defaultuser.png"}
+                        />
+                      )}
+                      <WriterInfo>
+                        <NameRow>
+                          <DivTmp>
+                            <WriterName>{el.writer.name}</WriterName>
+                            <CreatedAt>{getDate(el.createdAt)}</CreatedAt>
+                          </DivTmp>
+                          {props.savedInfo?.fetchSavedBoards.filter(
+                            (el2: any) => el2.board.id === el.id
+                          ).length > 0 ? (
+                            props.savedInfo?.fetchSavedBoards.map((el3: any) =>
+                              el3.board.id === el.id ? (
+                                el3.isSaved ? (
                                   <motion.div
-                                    whileHover={{ scale: 1.4 }}
+                                    whileHover={{ scale: 1.25 }}
                                     transition={{ duration: 0.3 }}
                                     key={String(uuidv4())}
                                   >
-                                    <LikeOff />
+                                    <MdBookmark
+                                      size={"22"}
+                                      onClick={() => props.onClickSaved(el)}
+                                      style={{
+                                        cursor: "pointer",
+                                        color: "#FFB950",
+                                      }}
+                                    />
                                   </motion.div>
-
-                                  {el.likes}
-                                </Like>
+                                ) : (
+                                  <motion.div
+                                    whileHover={{ scale: 1.25 }}
+                                    transition={{ duration: 0.3 }}
+                                    key={String(uuidv4())}
+                                  >
+                                    <MdBookmarkBorder
+                                      size={"22"}
+                                      onClick={() => props.onClickSaved(el)}
+                                      style={{
+                                        cursor: "pointer",
+                                        color: "#FFB950",
+                                      }}
+                                    />
+                                  </motion.div>
+                                )
+                              ) : (
+                                ""
                               )
-                            ) : (
-                              ""
                             )
-                          )
-                        ) : (
-                          <Like onClick={props.onClickLikeBoard} id={el.id}>
-                            <LikeOff size={"13"} /> {el.likes}
-                          </Like>
-                        )}
-
-                        {/* <Like onClick={props.onClickLikeBoard} id={el.id}>
-                                <MdThumbUp size={'13'} /> {el.likes}
-                              </Like> */}
-                        {/* 해당 게시글의 댓글 갯수 */}
-                        <MdKeyboardArrowDown
-                          onClick={props.onClickCommentListBtn(index)}
-                          id={el.id}
-                          size={20}
-                          style={{
-                            marginLeft: "320px",
-                            marginBottom: "5px",
-                            cursor: "pointer",
-                          }}
+                          ) : (
+                            <motion.div
+                              whileHover={{ scale: 1.4 }}
+                              transition={{ duration: 0.3 }}
+                              key={String(uuidv4())}
+                            >
+                              <MdBookmarkBorder
+                                size={"22"}
+                                onClick={() => props.onClickSaved(el)}
+                                style={{
+                                  cursor: "pointer",
+                                  color: "#FFB950",
+                                }}
+                              />
+                            </motion.div>
+                          )}
+                        </NameRow>
+                      </WriterInfo>
+                    </WriterInfoBox>
+                    <ContentsBox>
+                      <Contents>{el.content}</Contents>
+                      <ContentsTranslateBox>
+                        <TranslateGarden
+                          content={el.content}
+                          myLang={el.writer.myLang}
                         />
-                      </LikeAndCommentCount>
-                    </LikeAndCommentCountBox>
-                  </ContentsBox>
-                  <GardenCommentWrite boardId={el.id} />
-                  {props.commentListVal[index] ? (
-                    <GardenCommentList boardElId={el.id} />
-                  ) : (
-                    <div></div>
-                  )}
-                </GardenListBox>
-              </div>
-            ))}
+                      </ContentsTranslateBox>
+
+                      <GardenImg boardId={el.id} video={el.video} />
+
+                      <LikeAndCommentCountBox>
+                        <LikeAndCommentCount>
+                          <CommentCount
+                            onClick={props.onClickCommentListBtn(index)}
+                            id={el.id}
+                          >
+                            <motion.div
+                              whileHover={{ scale: 1.4 }}
+                              transition={{ duration: 0.3 }}
+                              key={String(uuidv4())}
+                            >
+                              <CommentIcon size={"13"} />{" "}
+                            </motion.div>
+                            <SpanCommentCount>
+                              {el.commentsCount}
+                            </SpanCommentCount>
+                          </CommentCount>
+
+                          {props.savedInfo?.fetchSavedBoards.filter(
+                            (element: any) => element.board.id === el.id
+                          ).length > 0 ? (
+                            props.savedInfo?.fetchSavedBoards.map(
+                              (element2: any) =>
+                                element2.board.id === el.id ? (
+                                  element2.isLiked ? (
+                                    <Like
+                                      onClick={props.onClickLikeBoard}
+                                      id={el.id}
+                                    >
+                                      <WrapperIconRow>
+                                        <motion.div
+                                          whileHover={{ scale: 1.4 }}
+                                          transition={{ duration: 0.3 }}
+                                          key={String(uuidv4())}
+                                        >
+                                          <LikeOn />
+                                        </motion.div>
+                                      </WrapperIconRow>
+                                      {el.likes}
+                                    </Like>
+                                  ) : (
+                                    <Like
+                                      onClick={props.onClickLikeBoard}
+                                      id={el.id}
+                                    >
+                                      <motion.div
+                                        whileHover={{ scale: 1.4 }}
+                                        transition={{ duration: 0.3 }}
+                                        key={String(uuidv4())}
+                                      >
+                                        <LikeOff />
+                                      </motion.div>
+
+                                      {el.likes}
+                                    </Like>
+                                  )
+                                ) : (
+                                  ""
+                                )
+                            )
+                          ) : (
+                            <Like onClick={props.onClickLikeBoard} id={el.id}>
+                              <LikeOff size={"13"} /> {el.likes}
+                            </Like>
+                          )}
+
+                          <MdKeyboardArrowDown
+                            onClick={props.onClickCommentListBtn(index)}
+                            id={el.id}
+                            size={20}
+                            style={{
+                              marginLeft: "320px",
+                              marginBottom: "5px",
+                              cursor: "pointer",
+                            }}
+                          />
+                        </LikeAndCommentCount>
+                      </LikeAndCommentCountBox>
+                    </ContentsBox>
+                    <GardenCommentWrite boardId={el.id} />
+                    {props.commentListVal[index] ? (
+                      <GardenCommentList boardElId={el.id} />
+                    ) : (
+                      <div></div>
+                    )}
+                  </GardenListBox>
+                </div>
+              )
+            )}
           </>
         </Wrapper>
       </GardenWrapper>

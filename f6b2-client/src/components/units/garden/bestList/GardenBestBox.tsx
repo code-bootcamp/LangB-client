@@ -55,7 +55,7 @@ const ProfileWrapper = styled.div`
   position: absolute;
 `;
 
-export default function GardenBestBox(props) {
+export default function GardenBestBox(props: any) {
   const router = useRouter();
   const { data } = useQuery(FETCH_BOARD_IMAGE, {
     variables: {
@@ -69,22 +69,6 @@ export default function GardenBestBox(props) {
 
   return (
     <GardenBest onClick={onClickMoveToDetail}>
-      {/* {props.el.video !== "" ? (
-        <Background2 src={props.el.video} autoPlay loop muted />
-      ) : props.el.video === "" && data?.fetchBoardImage[0]?.image === "" ? (
-        <Background3 />
-      ) : (
-        <Background src={data?.fetchBoardImage[0]?.image} />
-      )} */}
-
-      {/* {props.el.video && data?.fetchBoardImage[0]?.image ? (
-        <Background2 src={props.el.video} autoPlay loop muted />
-      ) : data?.fetchBoardImage[0]?.image ? (
-        <Background src={data?.fetchBoardImage[0]?.image} />
-      ) : (
-        <Background3 />
-      )} */}
-
       {data?.fetchBoardImage[0]?.image === undefined && (
         <Background3 src="https://cdn.discordapp.com/attachments/974505238029533295/976294038162530364/default.jpg" />
       )}

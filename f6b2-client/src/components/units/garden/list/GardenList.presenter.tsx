@@ -63,10 +63,7 @@ export default function GardenListUI(props: any) {
         </WrapperLeft>
         <Wrapper>
           <WrapperSearch>
-            <InputSearchBar
-              // placeholder={'Search'}
-              onChange={props.onChangeSearchKeyword}
-            />
+            <InputSearchBar onChange={props.onChangeSearchKeyword} />
             <IconSearch />
           </WrapperSearch>
           {props.searchKeyword ? (
@@ -79,7 +76,7 @@ export default function GardenListUI(props: any) {
                 loadMore={props.loadFunc}
                 hasMore={true}
               >
-                {props.data?.fetchBoards.map((el, index) => (
+                {props.data?.fetchBoards.map((el: any, index: any) => (
                   <div key={String(uuidv4())}>
                     {props.loginUserInfo?.newLang === el.writer.myLang ? (
                       <GardenListBox>
@@ -104,44 +101,49 @@ export default function GardenListUI(props: any) {
                                 <CreatedAt>{getDate(el.createdAt)}</CreatedAt>
                               </DivTmp>
                               {props.savedInfo?.fetchSavedBoards.filter(
-                                (el2) => el2.board.id === el.id
+                                (el2: any) => el2.board.id === el.id
                               ).length > 0 ? (
-                                props.savedInfo?.fetchSavedBoards.map((el3) =>
-                                  el3.board.id === el.id ? (
-                                    el3.isSaved ? (
-                                      <motion.div
-                                        whileHover={{ scale: 1.25 }}
-                                        transition={{ duration: 0.3 }}
-                                        key={String(uuidv4())}
-                                      >
-                                        <MdBookmark
-                                          size={"22"}
-                                          onClick={() => props.onClickSaved(el)}
-                                          style={{
-                                            cursor: "pointer",
-                                            color: "#FFB950",
-                                          }}
-                                        />
-                                      </motion.div>
+                                props.savedInfo?.fetchSavedBoards.map(
+                                  (el3: any) =>
+                                    el3.board.id === el.id ? (
+                                      el3.isSaved ? (
+                                        <motion.div
+                                          whileHover={{ scale: 1.25 }}
+                                          transition={{ duration: 0.3 }}
+                                          key={String(uuidv4())}
+                                        >
+                                          <MdBookmark
+                                            size={"22"}
+                                            onClick={() =>
+                                              props.onClickSaved(el)
+                                            }
+                                            style={{
+                                              cursor: "pointer",
+                                              color: "#FFB950",
+                                            }}
+                                          />
+                                        </motion.div>
+                                      ) : (
+                                        <motion.div
+                                          whileHover={{ scale: 1.25 }}
+                                          transition={{ duration: 0.3 }}
+                                          key={String(uuidv4())}
+                                        >
+                                          <MdBookmarkBorder
+                                            size={"22"}
+                                            onClick={() =>
+                                              props.onClickSaved(el)
+                                            }
+                                            style={{
+                                              cursor: "pointer",
+                                              color: "#FFB950",
+                                            }}
+                                          />
+                                        </motion.div>
+                                      )
                                     ) : (
-                                      <motion.div
-                                        whileHover={{ scale: 1.25 }}
-                                        transition={{ duration: 0.3 }}
-                                        key={String(uuidv4())}
-                                      >
-                                        <MdBookmarkBorder
-                                          size={"22"}
-                                          onClick={() => props.onClickSaved(el)}
-                                          style={{
-                                            cursor: "pointer",
-                                            color: "#FFB950",
-                                          }}
-                                        />
-                                      </motion.div>
+                                      ""
                                     )
-                                  ) : (
-                                    ""
-                                  )
                                 )
                               ) : (
                                 <motion.div
@@ -165,17 +167,15 @@ export default function GardenListUI(props: any) {
                         <ContentsBox>
                           <Contents>{el.content}</Contents>
                           <ContentsTranslateBox>
-                            {/* 번역API 버튼 자리? */}
                             <TranslateGarden
                               content={el.content}
                               myLang={el.writer.myLang}
                             />
                           </ContentsTranslateBox>
-                          {/* 캐러셀 */}
+
                           <GardenImg boardId={el.id} video={el.video} />
-                          {/* <ContentsImg /> */}
+
                           <LikeAndCommentCountBox>
-                            {/* <div></div> */}
                             <LikeAndCommentCount>
                               <CommentCount
                                 onClick={props.onClickCommentListBtn(index)}
@@ -194,10 +194,10 @@ export default function GardenListUI(props: any) {
                               </CommentCount>
 
                               {props.savedInfo?.fetchSavedBoards.filter(
-                                (element) => element.board.id === el.id
+                                (element: any) => element.board.id === el.id
                               ).length > 0 ? (
                                 props.savedInfo?.fetchSavedBoards.map(
-                                  (element2) =>
+                                  (element2: any) =>
                                     element2.board.id === el.id ? (
                                       element2.isLiked ? (
                                         <Like
@@ -244,10 +244,6 @@ export default function GardenListUI(props: any) {
                                 </Like>
                               )}
 
-                              {/* <Like onClick={props.onClickLikeBoard} id={el.id}>
-                                <MdThumbUp size={'13'} /> {el.likes}
-                              </Like> */}
-                              {/* 해당 게시글의 댓글 갯수 */}
                               <MdKeyboardArrowDown
                                 onClick={props.onClickCommentListBtn(index)}
                                 id={el.id}
@@ -271,7 +267,7 @@ export default function GardenListUI(props: any) {
                     ) : (
                       ""
                     )}
-                    {/* 로그인 안했을 때 */}
+
                     {!props.isToken ? (
                       <GardenListBox>
                         <WriterInfoBox>
@@ -295,44 +291,49 @@ export default function GardenListUI(props: any) {
                                 <CreatedAt>{getDate(el.createdAt)}</CreatedAt>
                               </DivTmp>
                               {props.savedInfo?.fetchSavedBoards.filter(
-                                (el2) => el2.board.id === el.id
+                                (el2: any) => el2.board.id === el.id
                               ).length > 0 ? (
-                                props.savedInfo?.fetchSavedBoards.map((el3) =>
-                                  el3.board.id === el.id ? (
-                                    el3.isSaved ? (
-                                      <motion.div
-                                        whileHover={{ scale: 1.25 }}
-                                        transition={{ duration: 0.3 }}
-                                        key={String(uuidv4())}
-                                      >
-                                        <MdBookmark
-                                          size={"22"}
-                                          onClick={() => props.onClickSaved(el)}
-                                          style={{
-                                            cursor: "pointer",
-                                            color: "#FFB950",
-                                          }}
-                                        />
-                                      </motion.div>
+                                props.savedInfo?.fetchSavedBoards.map(
+                                  (el3: any) =>
+                                    el3.board.id === el.id ? (
+                                      el3.isSaved ? (
+                                        <motion.div
+                                          whileHover={{ scale: 1.25 }}
+                                          transition={{ duration: 0.3 }}
+                                          key={String(uuidv4())}
+                                        >
+                                          <MdBookmark
+                                            size={"22"}
+                                            onClick={() =>
+                                              props.onClickSaved(el)
+                                            }
+                                            style={{
+                                              cursor: "pointer",
+                                              color: "#FFB950",
+                                            }}
+                                          />
+                                        </motion.div>
+                                      ) : (
+                                        <motion.div
+                                          whileHover={{ scale: 1.25 }}
+                                          transition={{ duration: 0.3 }}
+                                          key={String(uuidv4())}
+                                        >
+                                          <MdBookmarkBorder
+                                            size={"22"}
+                                            onClick={() =>
+                                              props.onClickSaved(el)
+                                            }
+                                            style={{
+                                              cursor: "pointer",
+                                              color: "#FFB950",
+                                            }}
+                                          />
+                                        </motion.div>
+                                      )
                                     ) : (
-                                      <motion.div
-                                        whileHover={{ scale: 1.25 }}
-                                        transition={{ duration: 0.3 }}
-                                        key={String(uuidv4())}
-                                      >
-                                        <MdBookmarkBorder
-                                          size={"22"}
-                                          onClick={() => props.onClickSaved(el)}
-                                          style={{
-                                            cursor: "pointer",
-                                            color: "#FFB950",
-                                          }}
-                                        />
-                                      </motion.div>
+                                      ""
                                     )
-                                  ) : (
-                                    ""
-                                  )
                                 )
                               ) : (
                                 <motion.div
@@ -356,14 +357,12 @@ export default function GardenListUI(props: any) {
                         <ContentsBox>
                           <Contents>{el.content}</Contents>
                           <ContentsTranslateBox>
-                            {/* 번역API 버튼 자리? */}
                             <TranslateGarden content={el.content} />
                           </ContentsTranslateBox>
-                          {/* 캐러셀 */}
+
                           <GardenImg boardId={el.id} video={el.video} />
-                          {/* <ContentsImg /> */}
+
                           <LikeAndCommentCountBox>
-                            {/* <div></div> */}
                             <LikeAndCommentCount>
                               <CommentCount
                                 onClick={props.onClickCommentListBtn(index)}
@@ -382,10 +381,10 @@ export default function GardenListUI(props: any) {
                               </CommentCount>
 
                               {props.savedInfo?.fetchSavedBoards.filter(
-                                (element) => element.board.id === el.id
+                                (element: any) => element.board.id === el.id
                               ).length > 0 ? (
                                 props.savedInfo?.fetchSavedBoards.map(
-                                  (element2) =>
+                                  (element2: any) =>
                                     element2.board.id === el.id ? (
                                       element2.isLiked ? (
                                         <Like
@@ -432,10 +431,6 @@ export default function GardenListUI(props: any) {
                                 </Like>
                               )}
 
-                              {/* <Like onClick={props.onClickLikeBoard} id={el.id}>
-                                <MdThumbUp size={'13'} /> {el.likes}
-                              </Like> */}
-                              {/* 해당 게시글의 댓글 갯수 */}
                               <MdKeyboardArrowDown
                                 onClick={props.onClickCommentListBtn(index)}
                                 id={el.id}

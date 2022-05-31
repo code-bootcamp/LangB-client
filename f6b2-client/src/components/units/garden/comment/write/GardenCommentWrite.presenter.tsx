@@ -10,60 +10,58 @@ import {
   Thumbnail,
   VideoBtn,
   VideoThumbnail,
-} from './GardenCommentWrite.styles';
-import { MdForwardToInbox, MdPhoto, MdPhotoCameraFront } from 'react-icons/md';
-import { BiSend } from 'react-icons/bi';
-import ImageUpload from '../../../../commons/upload';
-import VideoUpload from '../../../../commons/videoupload';
-import { Tooltip } from '@mui/material';
+} from "./GardenCommentWrite.styles";
+import { MdForwardToInbox, MdPhoto, MdPhotoCameraFront } from "react-icons/md";
+import { BiSend } from "react-icons/bi";
+import ImageUpload from "../../../../commons/upload";
+import VideoUpload from "../../../../commons/videoupload";
+import { Tooltip } from "@mui/material";
 
 export default function GardenCommentWriteUI(props: any) {
   return (
     <>
       <CommentWriteBox>
-        {props.loginInfo?.image.includes('http') ? (
+        {props.loginInfo?.image.includes("http") ? (
           <CommentWriteProfile src={props.loginInfo?.image} />
         ) : (
-          <CommentWriteProfile src={'/image/defaultuser.png'} />
+          <CommentWriteProfile src={"/image/defaultuser.png"} />
         )}
         <CommentWriteInputBox>
           <CommentWriteInput
-            placeholder='Enter Your Comment Here!'
-            type={'text'}
+            placeholder="Enter Your Comment Here!"
+            type={"text"}
             onChange={props.onChangeComment}
             value={props.comment}
           />
           <CommentWriteBtn>
             {props.isEdit !== true ? (
-              // 댓글등록
-              <Tooltip title='Save Comment'>
+              <Tooltip title="Save Comment">
                 <SubmitBtn onClick={props.onClickCommentWrite}>
                   <BiSend />
                 </SubmitBtn>
               </Tooltip>
             ) : (
-              // 댓글수정
-              <Tooltip title='Update Comment'>
+              <Tooltip title="Update Comment">
                 <SubmitBtn onClick={props.onClickCommentUpdate}>
                   <MdForwardToInbox />
                 </SubmitBtn>
               </Tooltip>
             )}
-            <Tooltip title='Upload Image'>
+            <Tooltip title="Upload Image">
               <ImgBtn>
                 <ImageUpload
                   onChangeFileUrls={props.onChangeFileUrls}
                   fileUrls={props.fileUrls}
-                  type={'comment'}
+                  type={"comment"}
                 />
               </ImgBtn>
             </Tooltip>
-            <Tooltip title='Upload Video'>
+            <Tooltip title="Upload Video">
               <VideoBtn>
                 <VideoUpload
                   onChangeVideoUrls={props.onChangeVideoUrls}
                   videoUrls={props.videoUrls}
-                  type={'comment'}
+                  type={"comment"}
                 />
               </VideoBtn>
             </Tooltip>
@@ -71,8 +69,8 @@ export default function GardenCommentWriteUI(props: any) {
         </CommentWriteInputBox>
       </CommentWriteBox>
       <Thumbnail>
-        {props.fileUrls !== '' && <ImageThumbnail src={props.fileUrls} />}
-        {props.videoUrls !== '' && (
+        {props.fileUrls !== "" && <ImageThumbnail src={props.fileUrls} />}
+        {props.videoUrls !== "" && (
           <VideoThumbnail src={props.videoUrls} controls />
         )}
       </Thumbnail>

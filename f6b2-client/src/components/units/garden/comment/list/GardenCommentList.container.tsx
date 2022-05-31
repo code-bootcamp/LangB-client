@@ -1,14 +1,14 @@
-import { useMutation, useQuery } from '@apollo/client';
-import { useState } from 'react';
-import { useRecoilState } from 'recoil';
-import { userInfoState } from '../../../../../commons/store';
+import { useMutation, useQuery } from "@apollo/client";
+import { useState } from "react";
+import { useRecoilState } from "recoil";
+import { userInfoState } from "../../../../../commons/store";
 import {
   DELETE_COMMENT,
   FETCH_COMMENTS,
   LIKE_COMMENT,
-} from '../../../../commons/queries';
-import GardenCommentListUI from './GardenCommentList.presenter';
-import { FETCH_MYLIKED_COMMENT } from './GrdenCommentList.queries';
+} from "../../../../commons/queries";
+import GardenCommentListUI from "./GardenCommentList.presenter";
+import { FETCH_MYLIKED_COMMENT } from "./GrdenCommentList.queries";
 
 export default function GardenCommentList(props: any) {
   const [loginInfo] = useRecoilState(userInfoState);
@@ -26,7 +26,7 @@ export default function GardenCommentList(props: any) {
 
   const [deleteComment] = useMutation(DELETE_COMMENT);
 
-  const onClickDeleteComment = async (event) => {
+  const onClickDeleteComment = async (event: any) => {
     try {
       await deleteComment({
         variables: {
@@ -47,17 +47,15 @@ export default function GardenCommentList(props: any) {
   };
 
   const [commentEditVal, setCommentEditVal] = useState([false]);
-  // 댓글수정버튼 클릭 시, 수정창이 보인다
 
-  const commentEditBtn = (index) => (event) => {
+  const commentEditBtn = (index: any) => (event: any) => {
     const newCommentEditVal = [...commentEditVal];
     newCommentEditVal[index] = !commentEditVal[index];
     setCommentEditVal(newCommentEditVal);
   };
 
-  // 댓글 좋아요
   const [likeComment] = useMutation(LIKE_COMMENT);
-  const onClickCommentLike = async (event) => {
+  const onClickCommentLike = async (event: any) => {
     try {
       await likeComment({
         variables: {

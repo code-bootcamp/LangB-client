@@ -7,9 +7,6 @@ export const CommentWriteBox = styled.main`
   justify-content: center;
   align-items: center;
   margin-top: 20px;
-
-  // test
-  /* background-color: gray; */
 `;
 
 export const CommentWriteProfile = styled.img`

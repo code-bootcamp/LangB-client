@@ -91,9 +91,6 @@ export const WriterProfile = styled.img`
   cursor: pointer;
   object-fit: cover;
   background-color: white;
-
-  // test
-  /* background-color: gray; */
 `;
 
 export const WriterInfo = styled.article`
@@ -135,14 +132,6 @@ export const ContentsTranslateBox = styled.article`
   padding: 5px;
 `;
 
-// export const ContentsImg = styled.img`
-//   width: 335px;
-//   height: 221px;
-//   margin-top: 30px;
-//   // test
-//   background-color: gray;
-// `;
-
 export const ContentsTranslate = styled.div`
   font-weight: 400;
   font-size: 13px;
@@ -165,7 +154,7 @@ export const Like = styled.button`
   font-weight: 400;
   font-size: 12px;
   margin-right: 30px;
-  /* padding-right: 30px; */
+
   display: flex;
   flex-direction: row;
   justify-content: flex-start;

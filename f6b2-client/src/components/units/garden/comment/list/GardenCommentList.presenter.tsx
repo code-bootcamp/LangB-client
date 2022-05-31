@@ -37,11 +37,11 @@ const Image1 = styled(Image)`
   border-radius: 10px;
 `;
 
-export default function GardenCommentListUI(props) {
+export default function GardenCommentListUI(props: any) {
   timeago.register("ko", ko);
   return (
     <>
-      {props.comments?.fetchComments.map((el, index) => (
+      {props.comments?.fetchComments.map((el: any, index: any) => (
         <>
           <CommentListBox key={String(uuidv4())}>
             <CommentContentsBox>
@@ -56,9 +56,7 @@ export default function GardenCommentListUI(props) {
                       )}
                     </ProfileWrapper>
                     <CommentName>{el.writer.name}</CommentName>
-                    <CreatedAt datetime={el.createdAt} locale="ko">
-                      {/* <TimeAgo datetime={el.createdAt} locale='ko' /> */}
-                    </CreatedAt>
+                    <CreatedAt datetime={el.createdAt} locale="ko"></CreatedAt>
                     <LikeNumber> {el.likes} like</LikeNumber>
                   </InfoWrapper>
                   {props.loginInfo?.name === el.writer.name && (
@@ -84,27 +82,17 @@ export default function GardenCommentListUI(props) {
                 <CommentText>{el.content}</CommentText>
 
                 {props.myLike?.fetchLikedComment.filter(
-                  (el2) => el2.comment.id === el.id
+                  (el2: any) => el2.comment.id === el.id
                 ).length > 0 ? (
-                  props.myLike?.fetchLikedComment.map((el3) =>
+                  props.myLike?.fetchLikedComment.map((el3: any) =>
                     el3.comment.id === el.id ? (
                       el3.isLiked ? (
-                        <Like
-                          onClick={props.onClickCommentLike}
-                          id={el.id}
-                          // style={{ marginBottom: "10px" }}
-                        >
+                        <Like onClick={props.onClickCommentLike} id={el.id}>
                           <LikeOn />
-                          {/* {el.likes} */}
                         </Like>
                       ) : (
-                        <Like
-                          onClick={props.onClickCommentLike}
-                          id={el.id}
-                          // style={{ marginBottom: "10px" }}
-                        >
+                        <Like onClick={props.onClickCommentLike} id={el.id}>
                           <LikeOff />
-                          {/* {el.likes} */}
                         </Like>
                       )
                     ) : (
@@ -114,7 +102,6 @@ export default function GardenCommentListUI(props) {
                 ) : (
                   <Like onClick={props.onClickCommentLike} id={el.id}>
                     <LikeOff />
-                    {/* {el.likes} */}
                   </Like>
                 )}
               </ContentWrapper>
@@ -123,11 +110,10 @@ export default function GardenCommentListUI(props) {
                 {el.video !== "" && <CommentVideo src={el.video} controls />}
               </MediaBox>
             </CommentContentsBox>
-            {/* 버튼 조건 (작성자-유저 이름이 동일 시, 보임) */}
 
             <CommentBtns></CommentBtns>
           </CommentListBox>
-          {/* 댓글 수정창! */}
+
           {props.commentEditVal[index] && (
             <GardenCommentEdit
               commentEl={el}

@@ -23,11 +23,11 @@ export default function ChatAccess() {
     }
   });
 
-  const onChangeName = (event) => {
+  const onChangeName = (event: any) => {
     setName(event.target.value);
   };
 
-  const onChangeLanguage = (event) => {
+  const onChangeLanguage = (event: any) => {
     setLanguage(event.target.value);
   };
 

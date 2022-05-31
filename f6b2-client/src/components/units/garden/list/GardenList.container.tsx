@@ -15,10 +15,8 @@ import { useRouter } from "next/router";
 export default function GardenList() {
   const router = useRouter();
   const [saveGarden] = useMutation(SAVE_BOARD);
-  //  로그인 된 회원 정보(글로벌)
   const [loginUserInfo] = useRecoilState(userInfoState);
 
-  // 좋아요/ 저장하기 여부
   const { data: savedInfo } = useQuery(FETCH_SAVED_BOARDS, {
     variables: {
       userId: loginUserInfo?.id,
@@ -33,19 +31,16 @@ export default function GardenList() {
     },
   });
   const [likeBoard] = useMutation(LIKE_BOARD);
-  // 엑세스 토큰
   const [isToken, setIsToken] = useRecoilState(accessTokenState);
 
-  // 댓글 펼치기
   const [commentListVal, setCommentListVal] = useState([false]);
-  const onClickCommentListBtn = (index) => (event) => {
+  const onClickCommentListBtn = (index: any) => (event: any) => {
     const newCommentOpen = [...commentListVal];
     newCommentOpen[index] = !commentListVal[index];
     setCommentListVal(newCommentOpen);
   };
 
-  // 좋아요 클릭
-  const onClickLikeBoard = async (event) => {
+  const onClickLikeBoard = async (event: any) => {
     try {
       await likeBoard({
         variables: {
@@ -71,13 +66,11 @@ export default function GardenList() {
     }
   };
 
-  // 저장하기 버튼 클릭 함수
   const onClickSaved = async (data: IBoard) => {
     try {
       const result = await saveGarden({
         variables: {
           boardId: data.id,
-          // userId: data.writer.id,
         },
         refetchQueries: [
           {
@@ -93,7 +86,6 @@ export default function GardenList() {
     }
   };
 
-  // 무한스크롤
   const loadFunc = () => {
     if (!data) return;
     fetchMore({
@@ -108,14 +100,12 @@ export default function GardenList() {
     });
   };
 
-  // 가든에서 유저 프로필 클릭 시...
-  const onClickUserProfile = (event) => {
+  const onClickUserProfile = (event: any) => {
     router.push(`/profile/${event.target.id}`);
   };
 
-  // 검색 키워드
   const [searchKeyword, setSearchKeyword] = useState("");
-  const onChangeSearchKeyword = (event) => {
+  const onChangeSearchKeyword = (event: any) => {
     setSearchKeyword(event.target.value);
   };
 

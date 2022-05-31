@@ -23,16 +23,16 @@ import {
   UserInfo,
   UserName,
   Wrapper,
-} from './ChatRoom.styles';
-import { RiArrowGoBackLine } from 'react-icons/ri';
-import { BiSend } from 'react-icons/bi';
-import { v4 as uuidv4 } from 'uuid';
+} from "./ChatRoom.styles";
+import { RiArrowGoBackLine } from "react-icons/ri";
+import { BiSend } from "react-icons/bi";
+import { v4 as uuidv4 } from "uuid";
 
-export default function ChatRoomUI(props) {
+export default function ChatRoomUI(props: any) {
   let aa;
-  if (props.backGround === '한국어') {
+  if (props.backGround === "한국어") {
     aa =
-      'https://cdn.discordapp.com/attachments/974505238029533295/980855928381390918/korean.png';
+      "https://cdn.discordapp.com/attachments/974505238029533295/980855928381390918/korean.png";
   }
   return (
     <>
@@ -43,25 +43,25 @@ export default function ChatRoomUI(props) {
           </Header>
           <MainBox>
             <Sidebar>
-              <NameWrapper style={{ position: 'relative' }}>
+              <NameWrapper style={{ position: "relative" }}>
                 <UserName>User List</UserName>
-                {props.users !== '' && (
+                {props.users !== "" && (
                   <>
-                    {props.users.map((el) => (
+                    {props.users.map((el: any) => (
                       <MemberName key={uuidv4()}>▻ {el.name}</MemberName>
                     ))}
                   </>
                 )}
               </NameWrapper>
               <ExitBtn onClick={props.onClickExitChat}>
-                <RiArrowGoBackLine style={{ marginRight: '10px' }} />
+                <RiArrowGoBackLine style={{ marginRight: "10px" }} />
                 Exit Chat Room
               </ExitBtn>
             </Sidebar>
             <ChatRoom>
-              {props.messages !== '' && (
+              {props.messages !== "" && (
                 <TalkWrapper ref={props.messageBoxRef}>
-                  {props.messages.map((el) => (
+                  {props.messages.map((el: any) => (
                     <div key={uuidv4()}>
                       {el.user !== props.name ? (
                         <TalkBox>
@@ -85,7 +85,7 @@ export default function ChatRoomUI(props) {
               <InputBoxWrapper>
                 <InputBox>
                   <MessageInput
-                    placeholder='Enter your text here'
+                    placeholder="Enter your text here"
                     onChange={props.onChangeMessage}
                     onKeyPress={props.onKeyPressSubmit}
                     onClick={props.onClickSendMessage}

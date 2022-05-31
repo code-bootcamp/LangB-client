@@ -35,12 +35,10 @@ export default function GardenCommentEditUI(props: any) {
           />
           <CommentWriteBtn>
             {props.isEdit !== true ? (
-              // 댓글등록
               <SubmitBtn onClick={props.onClickCommentWrite}>
                 <BiSend />
               </SubmitBtn>
             ) : (
-              // 댓글수정
               <SubmitBtn onClick={props.onClickCommentUpdate}>
                 <BiSend />
               </SubmitBtn>

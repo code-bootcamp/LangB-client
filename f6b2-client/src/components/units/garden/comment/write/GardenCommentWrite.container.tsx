@@ -1,19 +1,19 @@
-import { useMutation } from '@apollo/client';
-import { useState } from 'react';
-import { useRecoilState } from 'recoil';
-import { userInfoState } from '../../../../../commons/store';
+import { useMutation } from "@apollo/client";
+import { useState } from "react";
+import { useRecoilState } from "recoil";
+import { userInfoState } from "../../../../../commons/store";
 import {
   CREATE_COMMENT,
   FETCH_BOARDS,
   FETCH_COMMENTS,
   UPDATE_COMMENT,
-} from '../../../../commons/queries';
-import GardenCommentWriteUI from './GardenCommentWrite.presenter';
+} from "../../../../commons/queries";
+import GardenCommentWriteUI from "./GardenCommentWrite.presenter";
 
 export default function GardenCommentWrite(props: any) {
   const [createComment] = useMutation(CREATE_COMMENT);
   const [updateComment] = useMutation(UPDATE_COMMENT);
-  const [comment, setComment] = useState('');
+  const [comment, setComment] = useState("");
   const [loginInfo] = useRecoilState(userInfoState);
 
   const onChangeComment = (event: any) => {
@@ -48,9 +48,9 @@ export default function GardenCommentWrite(props: any) {
           },
         ],
       });
-      setComment('');
-      setFileUrls('');
-      setVideoUrls('');
+      setComment("");
+      setFileUrls("");
+      setVideoUrls("");
     } catch (error) {
       alert(error);
     }
@@ -62,7 +62,8 @@ export default function GardenCommentWrite(props: any) {
       commentId: props.commentEl?.id,
     };
 
-    if (comment !== '') {
+    if (comment !== "") {
+      //  @ts-ignore
       myVariables.updateCommentInput.content = comment;
     }
 
@@ -78,21 +79,18 @@ export default function GardenCommentWrite(props: any) {
           },
         ],
       });
-      setComment('');
+      setComment("");
     } catch (error) {
       alert(error);
     }
   };
 
-  // 1. 이미지 URL을 받기 위한 set 선언
-  const [fileUrls, setFileUrls] = useState('');
-  // 2. 업로드 컴포넌트에 넘겨줄 콜백 함수(?)
+  const [fileUrls, setFileUrls] = useState("");
   const onChangeFileUrls = (fileUrl: string) => {
     setFileUrls(fileUrl);
   };
 
-  // 비디오 올리기
-  const [videoUrls, setVideoUrls] = useState('');
+  const [videoUrls, setVideoUrls] = useState("");
   const onChangeVideoUrls = (fileUrl: string) => {
     setVideoUrls(fileUrl);
   };
