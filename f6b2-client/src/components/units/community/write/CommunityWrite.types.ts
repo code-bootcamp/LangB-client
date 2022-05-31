@@ -13,7 +13,7 @@ export interface ICommunityBoardWriteUIProps {
   fileUrls: string[];
   onChangeTitle: (event: ChangeEvent<HTMLInputElement>) => void;
   onChangeContent: (value: string) => void;
-  onChangeFileUrls: (fileUrl: never) => void;
+  onChangeFileUrls: (fileUrl: string) => void;
   onClickSubmit: () => void;
   onClickUpdate: () => void;
   data?: Pick<IQuery, "fetchCommunityBoard">;

@@ -18,12 +18,6 @@ const textScale = keyframes`
     opacity: 0;
     text-shadow: 15px 30px 6px rgba(0, 0, 0, 0.25);
   }
-  /* 50% {
-    color: white;
-    transform: scale(1.05);
-    opacity: 1;
-    text-shadow: 15px 30px 6px rgba(0, 0, 0, 0.25);
-  } */
   100% {
     color: white;
     transform: scale(1);

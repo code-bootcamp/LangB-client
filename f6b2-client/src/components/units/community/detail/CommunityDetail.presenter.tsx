@@ -5,30 +5,8 @@ import { useRecoilState } from "recoil";
 import { userInfoState } from "../../../../commons/store";
 import Dompurify from "dompurify";
 import { GiHearts } from "react-icons/gi";
-// 번역
-import styled from "@emotion/styled";
-import { useState } from "react";
-import TranslateCommunity from "../../../commons/translate/community";
 
 export default function CommunityDetailUI(props: ICommunityDetailUIProps) {
-  // // 번역
-  const Button = styled.div`
-    color: #767676;
-    font-size: 9px;
-    border: none;
-    background-color: rgba(0, 0, 0, 0);
-    cursor: pointer;
-    margin-top: 5px;
-  `;
-  const TranslateBox = styled.div`
-    color: #767676;
-    margin-top: 5px;
-  `;
-  const [, setIsTranslate] = useState(false);
-  const onClickTranslate = () => {
-    setIsTranslate((prev) => !prev);
-  };
-
   // 로그인유저정보 가져오기
   const [userInfo] = useRecoilState(userInfoState);
   return (
@@ -115,10 +93,6 @@ export default function CommunityDetailUI(props: ICommunityDetailUIProps) {
                     }}
                   ></S.Contents>
                 )}
-                {/* 번역 컴포 불러오기 */}
-                {/* <TranslateCommunity
-                  content={props.data?.fetchCommunityBoard?.content}
-                /> */}
               </S.ContentsBox>
             </S.Detail>
 

@@ -62,8 +62,9 @@ export default function CommunityWrite(props: ICommunityBoardWriteProps) {
   };
 
   // 이미지 업로드 시
-  const onChangeFileUrls = (fileUrl: never) => {
+  const onChangeFileUrls = (fileUrl: string) => {
     const newFileUrls = [...fileUrls];
+    //@ts-ignore
     newFileUrls.push(fileUrl);
     setFileUrls(newFileUrls);
   };

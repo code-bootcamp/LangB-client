@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { BsFileEarmarkImage } from "react-icons/bs";
 import { MdUploadFile } from "react-icons/md";
-import { IUploadBtnProps } from "../Project/f6b2-team4-client/f6b2-client/src/components/units/community/write/CommunityWrite.types";
+import { IUploadBtnProps } from "../write/CommunityWrite.types";
 
 export const OutWrapper = styled.div`
   background-color: white;

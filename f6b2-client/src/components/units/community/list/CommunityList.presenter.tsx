@@ -1,5 +1,4 @@
 import * as S from "./CommunityList.styles";
-import { GiHearts, GiPlayerPrevious } from "react-icons/gi";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -7,7 +6,6 @@ import styled from "@emotion/styled";
 import { getDate } from "../../../../commons/libraries/utils";
 import { ICommunityListUIProps } from "./CommunityList.types";
 
-const arrow = <GiPlayerPrevious />;
 // 캐러셀 커스터마이징
 const Slider1 = styled(Slider)`
   width: 700px;
@@ -88,8 +86,8 @@ export default function CommunityListUI(props: ICommunityListUIProps) {
                 </S.Info>
                 <S.LikesWrapper>
                   <S.HeartsWrapper
-                    onClick={props.onClickLike}
-                    like={props.like}
+                  // onClick={props.onClickLike}
+                  // like={props.like}
                   >
                     <S.GiHeartsIcon />
                   </S.HeartsWrapper>
