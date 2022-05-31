@@ -1,9 +1,10 @@
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import ChatRoomUI from "./ChatRoom.presenter";
+//  @ts-ignore
 import io from "socket.io-client";
 
-let socket;
+let socket: any;
 
 export default function ChatRoom() {
   const router = useRouter();
@@ -33,23 +34,24 @@ export default function ChatRoom() {
     setBackground(String(router.query.chatInfo)?.split("-")[1]);
     setRoom(String(router.query.chatInfo)?.split("-")[1]);
 
-    socket.emit("join", { name, room }, (error) => {
+    socket.emit("join", { name, room }, (error: any) => {
       if (error) {
       }
     });
   });
 
   useEffect(() => {
-    socket.on("message", (message) => {
+    socket.on("message", (message: any) => {
+      //  @ts-ignore
       setMessages((msgs) => [...msgs, message]);
     });
-
+    //  @ts-ignore
     socket.on("roomData", ({ users }) => {
       setUsers(users);
     });
   });
 
-  const onChangeMessage = (event) => {
+  const onChangeMessage = (event: any) => {
     setMessage(event.target.value);
   };
 
@@ -65,12 +67,13 @@ export default function ChatRoom() {
     document.location.href = "/chat";
   };
 
-  const onKeyPressSubmit = (event) => {
+  const onKeyPressSubmit = (event: any) => {
     if (event.key == "Enter") onClickSendMessage();
   };
 
   const scrollToBottom = () => {
     if (messageBoxRef.current) {
+      //  @ts-ignore
       messageBoxRef.current.scrollTop = messageBoxRef.current.scrollHeight;
     }
   };
