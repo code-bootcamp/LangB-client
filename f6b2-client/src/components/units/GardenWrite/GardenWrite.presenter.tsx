@@ -16,6 +16,7 @@ export default function GardenWriteUI(props: IGardenWrite) {
 
   useEffect(() => {
     lottie.loadAnimation({
+      // @ts-ignore
       container: bee1Container.current,
       renderer: 'svg',
       loop: true,
@@ -83,6 +84,7 @@ export default function GardenWriteUI(props: IGardenWrite) {
 
             <VideoUpload
               onChangeVideoUrls={props.onChangeVideoUrls}
+              // @ts-ignore
               videoUrls={props.videoUrls}
               type={'garden'}
             />
@@ -133,7 +135,10 @@ export default function GardenWriteUI(props: IGardenWrite) {
         </>
       ) : (
         <>
-          <div ref={bee1Container}></div>
+          <div
+            // @ts-ignore
+            ref={bee1Container}
+          ></div>
           <L.MoveToLogin onClick={props.onClickLogin}>Log In</L.MoveToLogin>
         </>
       )}

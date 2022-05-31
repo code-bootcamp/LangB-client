@@ -7,13 +7,14 @@ import UserEditContainer from './useredit/useredit.container';
 import UserChargeContainer from './usercharge/usercharge.container';
 import lottie from 'lottie-web';
 import { useEffect, useRef } from 'react';
+import { IUserProfilePresenter } from './userprofile.type';
 
-export default function UserProfileUI(props) {
+export default function UserProfileUI(props: IUserProfilePresenter) {
   const beeFlyingContainer = useRef();
-  const beeHiveContainer = useRef();
 
   useEffect(() => {
     lottie.loadAnimation({
+      // @ts-ignore
       container: beeFlyingContainer.current,
       renderer: 'svg',
       loop: true,
@@ -22,17 +23,6 @@ export default function UserProfileUI(props) {
     });
   }, []);
 
-  // useEffect(() => {
-  //   lottie.loadAnimation({
-  //     container: beeHiveContainer.current,
-  //     renderer: 'svg',
-  //     loop: true,
-  //     autoplay: true,
-  //     animationData: require('../../../../public/lottie/bee-hive.json'),
-  //   });
-  // }, []);
-
-  // react slick setting
   const settings = {
     dots: false,
     infinite: true,
@@ -56,11 +46,8 @@ export default function UserProfileUI(props) {
     borderRadius: '25px',
   };
 
-  console.log(props.userGarden?.length);
-
   return (
     <Profile.WrapperRow>
-      {/* 왼쪽 */}
       <Profile.WrapperColUserinfo>
         <Profile.WrapperRowEnd>
           {props.isMy ? (
@@ -102,15 +89,29 @@ export default function UserProfileUI(props) {
           </Profile.PDetailValue>
         </Profile.WrapperRowDetail>
         <Profile.WrapperRowTab>
-          <Profile.WrapperColCenter onClick={props.onClickTab} id={'mygarden'}>
-            <Profile.IconMyGarden istab={props.istab} />
+          <Profile.WrapperColCenter
+            // @ts-ignore
+            onClick={props.onClickTab}
+            id={'mygarden'}
+          >
+            <Profile.IconMyGarden
+              // @ts-ignore
+              istab={props.istab}
+            />
             <Profile.PMyGardenText>My garden</Profile.PMyGardenText>
             <Profile.PMyGardenCount>
               {props.userGarden?.length}
             </Profile.PMyGardenCount>
           </Profile.WrapperColCenter>
-          <Profile.WrapperColCenter onClick={props.onClickTab} id={'myhive'}>
-            <Profile.IconMyHive istab={props.istab} />
+          <Profile.WrapperColCenter
+            // @ts-ignore
+            onClick={props.onClickTab}
+            id={'myhive'}
+          >
+            <Profile.IconMyHive
+              // @ts-ignore
+              istab={props.istab}
+            />
             <Profile.PMyGardenText>My Hive</Profile.PMyGardenText>
             <Profile.PMyGardenCount>
               {props.userCommunity?.length}
@@ -118,10 +119,14 @@ export default function UserProfileUI(props) {
           </Profile.WrapperColCenter>
           {props.isMy ? (
             <Profile.WrapperColCenter
+              // @ts-ignore
               onClick={props.onClickTab}
               id={'mycharge'}
             >
-              <Profile.IconMyCharge istab={props.istab} />
+              <Profile.IconMyCharge
+                // @ts-ignore
+                istab={props.istab}
+              />
               <Profile.PMyGardenText>Charge History</Profile.PMyGardenText>
               <Profile.PMyGardenCount>
                 {props.receipts?.fetchReceipts?.length}
@@ -133,7 +138,6 @@ export default function UserProfileUI(props) {
         </Profile.WrapperRowTab>
       </Profile.WrapperColUserinfo>
 
-      {/* 오른쪽 */}
       <Profile.WrapperMyContents>
         {props.istab === 'mygarden' ? (
           <Profile.WrapperRowNoMargin>
@@ -145,7 +149,7 @@ export default function UserProfileUI(props) {
               </>
             ) : (
               <Profile.SliderTab {...settings}>
-                {props.userGarden?.map((el, index) => (
+                {props.userGarden?.map((el: any, index: any) => (
                   <Profile.WrapperRowItem key={uuidv4()}>
                     <UserTabItemUI el={el} number={index} istab={props.istab} />
                   </Profile.WrapperRowItem>
@@ -166,11 +170,17 @@ export default function UserProfileUI(props) {
               </>
             ) : (
               <Profile.SliderTab {...settings}>
-                {props.community?.fetchCommunityBoards?.map((el, index) => (
-                  <Profile.WrapperRowItem key={uuidv4()}>
-                    <UserTabItemUI el={el} number={index} istab={props.istab} />
-                  </Profile.WrapperRowItem>
-                ))}
+                {props.community?.fetchCommunityBoards?.map(
+                  (el: any, index: any) => (
+                    <Profile.WrapperRowItem key={uuidv4()}>
+                      <UserTabItemUI
+                        el={el}
+                        number={index}
+                        istab={props.istab}
+                      />
+                    </Profile.WrapperRowItem>
+                  )
+                )}
               </Profile.SliderTab>
             )}
           </Profile.WrapperRowNoMargin>

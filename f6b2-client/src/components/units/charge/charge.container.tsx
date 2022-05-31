@@ -1,8 +1,8 @@
 import { useMutation } from '@apollo/client';
-import { Router, useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
-import { accessTokenState, userInfoState } from '../../../commons/store';
+import { userInfoState } from '../../../commons/store';
 import { FETCH_USER_LOGGED_IN } from '../SingnIn/signin.query';
 import ChargeStationUI from './charge.presenter';
 import { BUY_POINT } from './charge.queries';
@@ -13,7 +13,6 @@ declare const window: typeof globalThis & {
 
 export default function ChargeStation() {
   const [userInfo] = useRecoilState(userInfoState);
-  const [isToken] = useRecoilState(accessTokenState);
   const [isSelect, setIsSelect] = useState(0);
   const [buyPoint] = useMutation(BUY_POINT);
   const [isClicked, setIsClicked] = useState<any>({
@@ -25,20 +24,21 @@ export default function ChargeStation() {
   });
   const router = useRouter();
 
-  const onClickButton = (btnName: string) => (event) => {
-    const point = Number(
-      event.target.innerText.replace('P', '').replace(',', '')
-    );
-    setIsSelect(point);
-    setIsClicked({
-      btn1: false,
-      btn2: false,
-      btn3: false,
-      btn4: false,
-      btn5: false,
-      [btnName]: true,
-    });
-  };
+  const onClickButton =
+    (btnName: string) => (event: { target: { innerText: string } }) => {
+      const point = Number(
+        event.target.innerText.replace('P', '').replace(',', '')
+      );
+      setIsSelect(point);
+      setIsClicked({
+        btn1: false,
+        btn2: false,
+        btn3: false,
+        btn4: false,
+        btn5: false,
+        [btnName]: true,
+      });
+    };
 
   useEffect(() => {
     const jqueryScript = document.createElement('script');
@@ -51,15 +51,12 @@ export default function ChargeStation() {
   }, []);
 
   const requestPay = () => {
-    // IMP.request_pay(param, callback) 결제창 호출
-    const IMP = window.IMP; // 생략 가능
-    IMP.init('imp13990733'); // Example: imp00000000 가맹점 식별코드
+    const IMP = window.IMP;
+    IMP.init('imp13990733');
     IMP.request_pay(
       {
-        // param
         pg: 'html5_inicis',
         pay_method: 'card',
-        // merchant_uid: 'ORD20180131-0000011',
         name: 'LagnB Point',
         amount: isSelect * 10,
         buyer_email: userInfo.email,
@@ -67,14 +64,10 @@ export default function ChargeStation() {
         buyer_tel: '010-0000-0000',
         buyer_addr: '',
         buyer_postcode: '',
-        // m_redirect_url: 'http://localhost:3000/usedmarket',
       },
       async (rsp: any) => {
-        // callback
         console.log(rsp);
         if (rsp.success) {
-          // 결제 성공 시 로직,
-          console.log(rsp);
           const response = await buyPoint({
             variables: {
               impUid: rsp.imp_uid,
@@ -88,7 +81,6 @@ export default function ChargeStation() {
           });
           router.push('/charge/thanks');
         } else {
-          // 결제 실패 시 로직,
           alert('결제에 실패했습니다. 다시 시도해 주세요');
         }
       }

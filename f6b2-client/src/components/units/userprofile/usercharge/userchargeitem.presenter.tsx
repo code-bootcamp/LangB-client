@@ -5,7 +5,11 @@ import { Box } from '@mui/material';
 import React from 'react';
 import CancleModalBox from './userchargemodalbox.presenter';
 
-export default function UserChargeItem(props) {
+interface IUserChargeItem {
+  el: any;
+}
+
+export default function UserChargeItem(props: IUserChargeItem) {
   const style = {
     position: 'absolute' as 'absolute',
     top: '50%',

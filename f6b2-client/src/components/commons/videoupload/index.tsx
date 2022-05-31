@@ -48,10 +48,6 @@ export default function VideoUpload(props: {
   recordUrls?: Array<string>;
   handleClose?: () => void;
 }) {
-  // type
-  // garden : 가든 게시물 작성
-  // comment : 댓글 게시물 작성
-
   const fileRef = useRef<HTMLInputElement>(null);
 
   const [videoUrl, setVideoUrl] = useState<string | undefined>('');
@@ -93,6 +89,7 @@ export default function VideoUpload(props: {
       setVideoUrl(resultVideoUrl?.uploadFile[3]);
       if (props.onChangeVideoUrls)
         props.onChangeVideoUrls(String(resultVideoUrl?.uploadFile[3]));
+      // @ts-ignore
       props.handleClose();
     } catch (error) {
       if (error instanceof Error) alert(error.message);

@@ -2,7 +2,12 @@ import * as Charge from './usercharge.styles';
 import Barcode from 'react-barcode';
 import UserChargeItem from './userchargeitem.presenter';
 
-export default function UserChargeUI(props) {
+interface IUserProfileChargelistPresenter {
+  receipts: any;
+  totalPoint: number;
+}
+
+export default function UserChargeUI(props: IUserProfileChargelistPresenter) {
   const options = {
     width: 2,
     height: 40,
@@ -45,8 +50,7 @@ export default function UserChargeUI(props) {
           <Charge.H3Title>Point</Charge.H3Title>
           <Charge.H3Title>Price</Charge.H3Title>
         </Charge.WrapperRow53>
-        {/* 충전, 사용내역 시작 */}
-        {props.receipts.fetchReceipts.map((el) => (
+        {props.receipts.fetchReceipts.map((el: any) => (
           <UserChargeItem el={el} />
         ))}
 

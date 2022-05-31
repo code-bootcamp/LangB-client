@@ -9,11 +9,5 @@ export const checkFileValidation = (file?: File) => {
     alert('too big file limit 30mb');
     return false;
   }
-
-  // 확장자 체크
-  // if (!file.type.includes('jpeg') && !file.type.includes('png')) {
-  //   alert('jpeg png can upload');
-  //   return false;
-  // }
   return true;
 };

@@ -26,7 +26,11 @@ export default function GardenCommentList(props: any) {
 
   const [deleteComment] = useMutation(DELETE_COMMENT);
 
-  const onClickDeleteComment = async (event: any) => {
+
+  const onClickDeleteComment = async (event: {
+    currentTarget: { id: any };
+  }) => {
+
     try {
       await deleteComment({
         variables: {
@@ -48,14 +52,19 @@ export default function GardenCommentList(props: any) {
 
   const [commentEditVal, setCommentEditVal] = useState([false]);
 
-  const commentEditBtn = (index: any) => (event: any) => {
+
+  const commentEditBtn = (index: string | number) => (event: any) => {
+
     const newCommentEditVal = [...commentEditVal];
+    // @ts-ignore
     newCommentEditVal[index] = !commentEditVal[index];
     setCommentEditVal(newCommentEditVal);
   };
 
   const [likeComment] = useMutation(LIKE_COMMENT);
-  const onClickCommentLike = async (event: any) => {
+
+  const onClickCommentLike = async (event: { currentTarget: { id: any } }) => {
+
     try {
       await likeComment({
         variables: {

@@ -3,8 +3,25 @@ import Box from '@mui/material/Box';
 import FormControl from '@mui/material/FormControl';
 import { NativeSelect } from '@mui/material';
 import ImageUpload from '../../../commons/upload';
+import { SelectChangeEvent } from '@mui/material/Select';
 
-export default function UserEditUI(props) {
+interface IUserProfileEdit {
+  isNewLang: string;
+  handleChange: (event: SelectChangeEvent) => void;
+  onChangeName: (event: SelectChangeEvent) => void;
+  onClickUpdate: () => void;
+  onChangeNewPw: (event: {
+    target: { value: React.SetStateAction<string> };
+  }) => void;
+  user: any;
+  onChangeFileUrls: any;
+  fileUrls: any;
+  onChangeCurPw: (event: {
+    target: { value: React.SetStateAction<string> };
+  }) => void;
+}
+
+export default function UserEditUI(props: IUserProfileEdit) {
   return (
     <Edit.WrapperCol>
       <Edit.ImgProfile src={props?.fileUrls} />
@@ -28,6 +45,7 @@ export default function UserEditUI(props) {
             <NativeSelect
               defaultValue={props?.user?.fetchUserId?.newLang}
               inputProps={{ style: { fontSize: 14 } }}
+              // @ts-ignore
               onChange={props.handleChange}
             >
               <option value={'한국어'}>한국어</option>
@@ -40,24 +58,7 @@ export default function UserEditUI(props) {
           </FormControl>
         </Box>
       </Edit.WrapperRow>
-      {/* <Edit.WrapperRow>
-        <Edit.PLabel>Current Region</Edit.PLabel>
-        <Box sx={{ minWidth: 120 }}>
-          <FormControl fullWidth>
-            <NativeSelect
-              defaultValue={'서울'}
-              inputProps={{
-                name: 'Region',
-                id: 'uncontrolled-native',
-              }}
-              onChange={props.handleChangeRegion}
-            >
-              <option value={'서울'}>서울</option>
-              <option value={'인천'}>인천</option>
-            </NativeSelect>
-          </FormControl>
-        </Box>
-      </Edit.WrapperRow> */}
+
       <Edit.WrapperRow>
         <Edit.PLabel>Current Password</Edit.PLabel>
         <Edit.InputPW

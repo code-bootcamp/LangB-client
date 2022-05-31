@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { AiOutlineVideoCamera } from 'react-icons/ai';
+import { IGardenWriteStyle } from './GardenWrite.type';
 
 export const WrapperDiv = styled.div`
   display: flex;
@@ -76,7 +77,7 @@ export const ButtonSave = styled.button`
   border-radius: 10px;
   border: none;
   color: white;
-  display: ${(props) => !!!props.isContent && 'none'};
+  display: ${(props: IGardenWriteStyle) => !!!props.isContent && 'none'};
   font-family: 'Istok Web';
   font-style: normal;
   font-weight: 700;
@@ -132,7 +133,6 @@ export const WrapperItem = styled.div`
   flex-wrap: wrap;
   width: 100%;
   height: auto;
-  /* padding: 10px 15px; */
 `;
 
 export const GardenRecordUpload = styled(AiOutlineVideoCamera)`

@@ -1,16 +1,16 @@
-import { useMutation, useQuery } from "@apollo/client";
-import { useState } from "react";
-import GardenListUI from "./GardenList.presenter";
+import { useMutation, useQuery } from '@apollo/client';
+import { useState } from 'react';
+import GardenListUI from './GardenList.presenter';
 import {
   FETCH_BOARDS,
   FETCH_SAVED_BOARDS,
   SAVE_BOARD,
-} from "../../../commons/queries";
-import { IBoard } from "../../../../commons/types/generated/types";
-import { LIKE_BOARD } from "./GardenList.queries";
-import { useRecoilState } from "recoil";
-import { accessTokenState, userInfoState } from "../../../../commons/store";
-import { useRouter } from "next/router";
+} from '../../../commons/queries';
+import { IBoard } from '../../../../commons/types/generated/types';
+import { LIKE_BOARD } from './GardenList.queries';
+import { useRecoilState } from 'recoil';
+import { accessTokenState, userInfoState } from '../../../../commons/store';
+import { useRouter } from 'next/router';
 
 export default function GardenList() {
   const router = useRouter();
@@ -104,8 +104,10 @@ export default function GardenList() {
     router.push(`/profile/${event.target.id}`);
   };
 
+
   const [searchKeyword, setSearchKeyword] = useState("");
   const onChangeSearchKeyword = (event: any) => {
+
     setSearchKeyword(event.target.value);
   };
 
