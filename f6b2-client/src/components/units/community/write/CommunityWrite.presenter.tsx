@@ -3,7 +3,6 @@ import * as S from "./CommunityWrite.styles";
 import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
-import { Quill } from "react-quill";
 import ImageUpload from "../../../commons/upload";
 import { ICommunityBoardWriteUIProps } from "./CommunityWrite.types";
 import { v4 as uuidv4 } from "uuid";
@@ -17,8 +16,7 @@ export default function CommunityListUI(props: ICommunityBoardWriteUIProps) {
     toolbar: [
       [{ header: [1, 2, 3, false] }],
       ["bold", "blockquote"],
-      // [{ list: "ordered" }, { list: "bullet" }],
-      [{ align: [] }, { color: [] }], // dropdown with defaults from theme
+      [{ align: [] }, { color: [] }],
     ],
   };
 
@@ -42,7 +40,7 @@ export default function CommunityListUI(props: ICommunityBoardWriteUIProps) {
                 <S.ImageThumbnail key={uuidv4()} src={String(props.fileUrls)} />
               ) : (
                 <S.ImgWrapper>
-                  <ImageUpload
+                    <ImageUpload
                     onChangeFileUrls={props.onChangeFileUrls}
                     fileUrls={props.fileUrls}
                     type={"community"}

@@ -19,45 +19,16 @@ export default function GardenCommentEdit(props: any) {
     setComment(event.target.value);
   };
 
-  // 1. 이미지 URL을 받기 위한 set 선언
   const [fileUrls, setFileUrls] = useState("");
-  // 2. 업로드 컴포넌트에 넘겨줄 콜백 함수(?)
+
   const onChangeFileUrls = (fileUrl: string) => {
     setFileUrls(fileUrl);
   };
 
-  // 비디오 올리기
   const [videoUrls, setVideoUrls] = useState("");
   const onChangeVideoUrls = (fileUrl: string) => {
     setVideoUrls(fileUrl);
   };
-
-  // const onClickCommentWrite = async () => {
-  //   try {
-  //     await createComment({
-  //       variables: {
-  //         createCommentInput: {
-  //           content: comment,
-  //           image: "test",
-  //           video: "test",
-  //         },
-  //         boardId: props.boardId,
-  //       },
-  //       refetchQueries: [
-  //         {
-  //           query: FETCH_COMMENTS,
-  //           variables: {
-  //             boardId: props.boardId,
-  //           },
-  //         },
-  //       ],
-  //     });
-  //     alert("댓글작성성공!");
-  //     setComment("");
-  //   } catch (error) {
-  //     alert(error);
-  //   }
-  // };
 
   const onClickCommentUpdate = async () => {
     const myVariables = {
@@ -66,14 +37,17 @@ export default function GardenCommentEdit(props: any) {
     };
 
     if (comment !== "") {
+      //  @ts-ignore
       myVariables.updateCommentInput.content = comment;
     }
 
     if (fileUrls !== "") {
+      //  @ts-ignore
       myVariables.updateCommentInput.image = fileUrls;
     }
 
     if (videoUrls !== "") {
+      //  @ts-ignore
       myVariables.updateCommentInput.video = videoUrls;
     }
     try {
@@ -96,7 +70,6 @@ export default function GardenCommentEdit(props: any) {
   return (
     <GardenCommentWriteUI
       onChangeComment={onChangeComment}
-      // onClickCommentWrite={onClickCommentWrite}
       onClickCommentUpdate={onClickCommentUpdate}
       commentEl={props.commentEl}
       isEdit={props.isEdit}

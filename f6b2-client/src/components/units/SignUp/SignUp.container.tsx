@@ -11,33 +11,25 @@ export default function SignUp() {
   const [createUser] = useMutation(CREATE_USER);
   const [emailCheck] = useMutation(EMAIL_CHECK);
   const [verification] = useMutation(AUTH_NUM_CHECK);
-  // 인증번호를 받고 누르면 true로 바뀌어서 분기를 태우는 값
+
   const [authNumVal, setAuthNumVal] = useState(false);
-  // 내가 친 인증번호
+
   const [authNum, setAuthNum] = useState("");
-  // 내가 친 이메일
+
   const [email, setEmail] = useState("");
-  // 이메일 에러
+
   const [emailError, setEmailError] = useState("");
-  // 인증번호 에러메세지
+
   const [authError, setAuthError] = useState("");
-  // 인증번호 받기를 누를 시 버튼 authCall css-disabled 상태값
+
   const [authDisable, setAuthDisable] = useState(false);
-  // 인증번호 받기를 누를 시 버튼 authCheck css-disabled 상태값
   const [authCheckDisable, setAuthCheckDisable] = useState(true);
-  // 인증번호 인증이 설공할 시 signUp css-disabled 상태값
   const [signUpDisable, setSignUpDisable] = useState(true);
-  // 눈버튼 누르면 비밀번호가 보임
   const [passwordVisible, setPasswordVisible] = useState("password");
-  // 눈버튼 누르면 check비밀번호가 보임
   const [rePasswordVisible, setRePasswordVisible] = useState("password");
-  // 모국어 error
   const [myLangError, setMyLangError] = useState("");
-  // 배울언어 error
   const [learnLangError, setLearnLangError] = useState("");
-  // 비밀번호 에러
   const [passwordError, setPasswordError] = useState("");
-  // 비밀번호 확인 에러
   const [rePasswordError, setRePasswordError] = useState("");
 
   const { register, handleSubmit, formState } = useForm({

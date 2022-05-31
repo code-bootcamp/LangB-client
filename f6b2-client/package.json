@@ -10,7 +10,6 @@
     "generate": "graphql-codegen"
   },
   "dependencies": {
-    "styled-components": "^5.3.5",
     "@apollo/client": "^3.5.10",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
@@ -54,6 +53,7 @@
     "recoil": "^0.7.2",
     "slick-carousel": "^1.8.1",
     "socket.io-client": "^2.3.0",
+    "styled-components": "^5.3.5",
     "timeago-react": "^3.0.4",
     "uuid": "^8.3.2",
     "yup": "^0.32.11"

@@ -7,9 +7,6 @@ export const CommentWriteBox = styled.main`
   justify-content: center;
   align-items: center;
   margin-top: 20px;
-
-  // test
-  /* background-color: gray; */
 `;
 
 export const CommentWriteProfile = styled.img`
@@ -19,7 +16,6 @@ export const CommentWriteProfile = styled.img`
   margin-right: 15px;
   background-color: white;
 
-  //test
   background-color: gray;
 `;
 
@@ -30,6 +26,7 @@ export const CommentWriteInputBox = styled.article`
   flex-direction: row;
   align-items: center;
   background: #ffffff;
+  border-radius: 10px;
   border: 1px solid #dbdbdb;
 `;
 

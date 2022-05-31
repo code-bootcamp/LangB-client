@@ -1,7 +1,7 @@
 import CommunityListUI from "./CommunityList.presenter";
-import { useMutation, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import { MouseEvent, useState } from "react";
+import { MouseEvent } from "react";
 import {
   IQuery,
   IQueryFetchCommunityBoardsArgs,
@@ -12,11 +12,11 @@ export default function CommunityList() {
   const router = useRouter();
 
   //커뮤니티 글목록 데이터 가져오기
-  // const { data, refetch } = useQuery(FETCH_COMMUNITY_BOARDS);
   const { data } = useQuery<
     Pick<IQuery, "fetchCommunityBoards">,
     IQueryFetchCommunityBoardsArgs
   >(FETCH_COMMUNITY_BOARDS);
+
   //커뮤니티 새 글 작성페이지로 이동
   const onClickMoveToWrite = () => {
     router.push("./community/write");
@@ -35,8 +35,6 @@ export default function CommunityList() {
       onClickContent={onClickContent}
       // 새 글 작성
       onClickMoveToWrite={onClickMoveToWrite}
-      // 좋아요
-      // onClickLike={onClickLike}
     />
   );
 }
