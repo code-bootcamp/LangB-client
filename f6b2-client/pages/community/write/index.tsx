@@ -1,5 +1,10 @@
-import CommunityWrite from "../../../src/components/units/community/write/CommunityWrite.container";
+import CommunityWrite from '../../../src/components/units/community/write/CommunityWrite.container';
 
 export default function CommunityWritePage() {
-  return <CommunityWrite />;
+  return (
+    <CommunityWrite
+      // @ts-ignore
+      isEdit={undefined}
+    />
+  );
 }

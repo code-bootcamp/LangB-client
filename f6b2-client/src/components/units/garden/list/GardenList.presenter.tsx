@@ -1,5 +1,5 @@
-import GardenCommentList from "../comment/list/GardenCommentList.container";
-import GardenCommentWrite from "../comment/write/GardenCommentWrite.container";
+import GardenCommentList from '../comment/list/GardenCommentList.container';
+import GardenCommentWrite from '../comment/write/GardenCommentWrite.container';
 import {
   CommentCount,
   CommentListBtn,
@@ -30,28 +30,28 @@ import {
   IconSearch,
   WrapperIconRow,
   DivTmp,
-} from "./GardenList.styles";
+} from './GardenList.styles';
 import {
   MdQuestionAnswer,
   MdThumbUp,
   MdBookmarkBorder,
   MdBookmark,
-} from "react-icons/md";
-import { MdKeyboardArrowDown } from "react-icons/md";
-import { motion } from "framer-motion";
-import GardenBestList from "../bestList/GardenBestList.container";
+} from 'react-icons/md';
+import { MdKeyboardArrowDown } from 'react-icons/md';
+import { motion } from 'framer-motion';
+import GardenBestList from '../bestList/GardenBestList.container';
 // 날짜 데이터 yyyy-mm-dd 로 변경 모듈
 
-import { getDate } from "../../../../commons/libraries/utils";
-import GardenWriteContainer from "../../GardenWrite/GardenWrite.container";
-import DailyWordContainer from "../../dailyword/dailyword.container";
-import ArchiveContainer from "../../archivelist/archivelist.container";
-import InfiniteScroll from "react-infinite-scroller";
-import GardenImg from "../gardenImg/gardenImg.container";
-import TranslateGarden from "../../../commons/translate/garden";
-import GardenSearch from "../search/GardenSearch.container";
-import _ from "lodash";
-import { v4 as uuidv4 } from "uuid";
+import { getDate } from '../../../../commons/libraries/utils';
+import GardenWriteContainer from '../../GardenWrite/GardenWrite.container';
+import DailyWordContainer from '../../dailyword/dailyword.container';
+import ArchiveContainer from '../../archivelist/archivelist.container';
+import InfiniteScroll from 'react-infinite-scroller';
+import GardenImg from '../gardenImg/gardenImg.container';
+import TranslateGarden from '../../../commons/translate/garden';
+import GardenSearch from '../search/GardenSearch.container';
+import _ from 'lodash';
+import { v4 as uuidv4 } from 'uuid';
 
 export default function GardenListUI(props: any) {
   return (
@@ -81,7 +81,7 @@ export default function GardenListUI(props: any) {
                     {props.loginUserInfo?.newLang === el.writer.myLang ? (
                       <GardenListBox>
                         <WriterInfoBox>
-                          {el.writer.image.includes("http") ? (
+                          {el.writer.image.includes('http') ? (
                             <WriterProfile
                               onClick={props.onClickUserProfile}
                               id={el.writer.id}
@@ -91,7 +91,7 @@ export default function GardenListUI(props: any) {
                             <WriterProfile
                               onClick={props.onClickUserProfile}
                               id={el.writer.id}
-                              src={"/image/defaultuser.png"}
+                              src={'/image/defaultuser.png'}
                             />
                           )}
                           <WriterInfo>
@@ -113,13 +113,13 @@ export default function GardenListUI(props: any) {
                                           key={String(uuidv4())}
                                         >
                                           <MdBookmark
-                                            size={"22"}
+                                            size={'22'}
                                             onClick={() =>
                                               props.onClickSaved(el)
                                             }
                                             style={{
-                                              cursor: "pointer",
-                                              color: "#FFB950",
+                                              cursor: 'pointer',
+                                              color: '#FFB950',
                                             }}
                                           />
                                         </motion.div>
@@ -130,19 +130,19 @@ export default function GardenListUI(props: any) {
                                           key={String(uuidv4())}
                                         >
                                           <MdBookmarkBorder
-                                            size={"22"}
+                                            size={'22'}
                                             onClick={() =>
                                               props.onClickSaved(el)
                                             }
                                             style={{
-                                              cursor: "pointer",
-                                              color: "#FFB950",
+                                              cursor: 'pointer',
+                                              color: '#FFB950',
                                             }}
                                           />
                                         </motion.div>
                                       )
                                     ) : (
-                                      ""
+                                      ''
                                     )
                                 )
                               ) : (
@@ -152,11 +152,11 @@ export default function GardenListUI(props: any) {
                                   key={String(uuidv4())}
                                 >
                                   <MdBookmarkBorder
-                                    size={"22"}
+                                    size={'22'}
                                     onClick={() => props.onClickSaved(el)}
                                     style={{
-                                      cursor: "pointer",
-                                      color: "#FFB950",
+                                      cursor: 'pointer',
+                                      color: '#FFB950',
                                     }}
                                   />
                                 </motion.div>
@@ -186,7 +186,7 @@ export default function GardenListUI(props: any) {
                                   transition={{ duration: 0.3 }}
                                   key={String(uuidv4())}
                                 >
-                                  <CommentIcon size={"13"} />{" "}
+                                  <CommentIcon size={'13'} />{' '}
                                 </motion.div>
                                 <SpanCommentCount>
                                   {el.commentsCount}
@@ -232,7 +232,7 @@ export default function GardenListUI(props: any) {
                                         </Like>
                                       )
                                     ) : (
-                                      ""
+                                      ''
                                     )
                                 )
                               ) : (
@@ -240,7 +240,7 @@ export default function GardenListUI(props: any) {
                                   onClick={props.onClickLikeBoard}
                                   id={el.id}
                                 >
-                                  <LikeOff size={"13"} /> {el.likes}
+                                  <LikeOff size={'13'} /> {el.likes}
                                 </Like>
                               )}
 
@@ -249,9 +249,9 @@ export default function GardenListUI(props: any) {
                                 id={el.id}
                                 size={20}
                                 style={{
-                                  marginLeft: "320px",
-                                  marginBottom: "5px",
-                                  cursor: "pointer",
+                                  marginLeft: '320px',
+                                  marginBottom: '5px',
+                                  cursor: 'pointer',
                                 }}
                               />
                             </LikeAndCommentCount>
@@ -265,13 +265,13 @@ export default function GardenListUI(props: any) {
                         )}
                       </GardenListBox>
                     ) : (
-                      ""
+                      ''
                     )}
 
                     {!props.isToken ? (
                       <GardenListBox>
                         <WriterInfoBox>
-                          {el.writer.image.includes("http") ? (
+                          {el.writer.image.includes('http') ? (
                             <WriterProfile
                               onClick={props.onClickUserProfile}
                               id={el.writer.id}
@@ -281,7 +281,7 @@ export default function GardenListUI(props: any) {
                             <WriterProfile
                               onClick={props.onClickUserProfile}
                               id={el.writer.id}
-                              src={"/image/defaultuser.png"}
+                              src={'/image/defaultuser.png'}
                             />
                           )}
                           <WriterInfo>
@@ -303,13 +303,13 @@ export default function GardenListUI(props: any) {
                                           key={String(uuidv4())}
                                         >
                                           <MdBookmark
-                                            size={"22"}
+                                            size={'22'}
                                             onClick={() =>
                                               props.onClickSaved(el)
                                             }
                                             style={{
-                                              cursor: "pointer",
-                                              color: "#FFB950",
+                                              cursor: 'pointer',
+                                              color: '#FFB950',
                                             }}
                                           />
                                         </motion.div>
@@ -320,19 +320,19 @@ export default function GardenListUI(props: any) {
                                           key={String(uuidv4())}
                                         >
                                           <MdBookmarkBorder
-                                            size={"22"}
+                                            size={'22'}
                                             onClick={() =>
                                               props.onClickSaved(el)
                                             }
                                             style={{
-                                              cursor: "pointer",
-                                              color: "#FFB950",
+                                              cursor: 'pointer',
+                                              color: '#FFB950',
                                             }}
                                           />
                                         </motion.div>
                                       )
                                     ) : (
-                                      ""
+                                      ''
                                     )
                                 )
                               ) : (
@@ -342,11 +342,11 @@ export default function GardenListUI(props: any) {
                                   key={String(uuidv4())}
                                 >
                                   <MdBookmarkBorder
-                                    size={"22"}
+                                    size={'22'}
                                     onClick={() => props.onClickSaved(el)}
                                     style={{
-                                      cursor: "pointer",
-                                      color: "#FFB950",
+                                      cursor: 'pointer',
+                                      color: '#FFB950',
                                     }}
                                   />
                                 </motion.div>
@@ -373,7 +373,7 @@ export default function GardenListUI(props: any) {
                                   transition={{ duration: 0.3 }}
                                   key={String(uuidv4())}
                                 >
-                                  <CommentIcon size={"13"} />{" "}
+                                  <CommentIcon size={'13'} />{' '}
                                 </motion.div>
                                 <SpanCommentCount>
                                   {el.commentsCount}
@@ -419,7 +419,7 @@ export default function GardenListUI(props: any) {
                                         </Like>
                                       )
                                     ) : (
-                                      ""
+                                      ''
                                     )
                                 )
                               ) : (
@@ -427,7 +427,7 @@ export default function GardenListUI(props: any) {
                                   onClick={props.onClickLikeBoard}
                                   id={el.id}
                                 >
-                                  <LikeOff size={"13"} /> {el.likes}
+                                  <LikeOff size={'13'} /> {el.likes}
                                 </Like>
                               )}
 
@@ -436,9 +436,9 @@ export default function GardenListUI(props: any) {
                                 id={el.id}
                                 size={20}
                                 style={{
-                                  marginLeft: "320px",
-                                  marginBottom: "5px",
-                                  cursor: "pointer",
+                                  marginLeft: '320px',
+                                  marginBottom: '5px',
+                                  cursor: 'pointer',
                                 }}
                               />
                             </LikeAndCommentCount>
@@ -452,7 +452,7 @@ export default function GardenListUI(props: any) {
                         )}
                       </GardenListBox>
                     ) : (
-                      ""
+                      ''
                     )}
                   </div>
                 )) || <div></div>}

@@ -1,16 +1,16 @@
-import * as S from "./GardenDetail.styles";
-import { getDate } from "../../../commons/libraries/utils";
-import { MdQuestionAnswer, MdThumbUp, MdBookmarkBorder } from "react-icons/md";
-import { useRecoilState } from "recoil";
-import { userInfoState } from "../../../commons/store";
-import GardenDetailImg from "./detailImg/gardenDetailImg.container";
-import GardenDetailCommentList from "./detailcomment/list/GardenDetailCommentList.container";
-import GardenDetailCommentWrite from "./detailcomment/write/GardenDetailCommentWrite.container";
-import TranslateGarden from "../../commons/translate/garden";
-import DropdownIcon from "./dropDown";
-import { FETCH_MYLIKED_COMMENT } from "../garden/comment/list/GrdenCommentList.queries";
-import { useQuery } from "@apollo/client";
-import { FETCH_SAVED_BOARDS } from "../../commons/queries";
+import * as S from './GardenDetail.styles';
+import { getDate } from '../../../commons/libraries/utils';
+
+import { useRecoilState } from 'recoil';
+import { userInfoState } from '../../../commons/store';
+import GardenDetailImg from './detailImg/gardenDetailImg.container';
+import GardenDetailCommentList from './detailcomment/list/GardenDetailCommentList.container';
+import GardenDetailCommentWrite from './detailcomment/write/GardenDetailCommentWrite.container';
+import TranslateGarden from '../../commons/translate/garden';
+import DropdownIcon from './dropDown';
+
+import { useQuery } from '@apollo/client';
+import { FETCH_SAVED_BOARDS } from '../../commons/queries';
 
 export default function GardenDetailUI(props: any) {
   const [loginInfo] = useRecoilState(userInfoState);
@@ -20,31 +20,26 @@ export default function GardenDetailUI(props: any) {
     },
   });
 
-  // props.data.fetchBoard.id
-  //
-
   return (
     <S.Outer>
       <S.GardenWrapper>
         <S.Wrapper>
           <S.GardenListBox key={props.data?.fetchBoard.id}>
-            {/* 이미지 */}
-            {/* <S.LeftWrapper> */}
             <S.ContentsImg>
               <GardenDetailImg
                 boardId={props.data?.fetchBoard.id}
                 video={props.data?.fetchBoard.video}
               />
             </S.ContentsImg>
-            {/* </S.LeftWrapper> */}
+
             <S.RightWrapper>
               <S.WriterInfoBox>
                 <S.WriterInfo>
                   <S.WriterProfile
                     src={
-                      props.data?.fetchBoard?.writer.image.includes("http")
+                      props.data?.fetchBoard?.writer.image.includes('http')
                         ? props.data?.fetchBoard?.writer.image
-                        : "/image/defaultuser.png"
+                        : '/image/defaultuser.png'
                     }
                   />
                   <S.WriterName>
@@ -54,11 +49,11 @@ export default function GardenDetailUI(props: any) {
                     {getDate(props.data?.fetchBoard.createdAt)}
                   </S.CreatedAt>
                 </S.WriterInfo>
-                {/* 수정,삭제버튼 */}
+
                 {props.data?.fetchBoard.writer.id === loginInfo?.id && (
                   <DropdownIcon />
                 )}
-                {props.data?.fetchBoard.writer.id !== loginInfo?.id && ""}
+                {props.data?.fetchBoard.writer.id !== loginInfo?.id && ''}
               </S.WriterInfoBox>
 
               <S.ContentsBox>
@@ -72,7 +67,6 @@ export default function GardenDetailUI(props: any) {
 
                 <S.LikeAndCommentCountBox>
                   <S.LikeAndCommentCount>
-                    {/* 댓글 수 나옴 */}
                     <S.CommentCount>
                       <S.CommentIcon />
 
@@ -80,10 +74,10 @@ export default function GardenDetailUI(props: any) {
                     </S.CommentCount>
 
                     {props.savedInfo?.fetchSavedBoards.filter(
-                      (element) =>
+                      (element: any) =>
                         element.board.id === props.data?.fetchBoard.id
                     ).length > 0 ? (
-                      props.savedInfo?.fetchSavedBoards.map((element2) =>
+                      props.savedInfo?.fetchSavedBoards.map((element2: any) =>
                         element2.board.id === props.data?.fetchBoard.id ? (
                           element2.isLiked ? (
                             <S.Like
@@ -101,7 +95,7 @@ export default function GardenDetailUI(props: any) {
                             </S.Like>
                           )
                         ) : (
-                          ""
+                          ''
                         )
                       )
                     ) : (
@@ -112,24 +106,14 @@ export default function GardenDetailUI(props: any) {
                         <S.LikeOff /> {props.data?.fetchBoard.likes}
                       </S.Like>
                     )}
-
-                    {/* <S.Like>
-                      <S.LikeOff
-                        onClick={props.onClickLikeBoard}
-                        id={props.data?.fetchBoard.id}
-                      />
-                      {props.data?.fetchBoard.likes}
-                    </S.Like> */}
                   </S.LikeAndCommentCount>
                 </S.LikeAndCommentCountBox>
-                {/* 댓글 목록 불러오기 */}
                 <S.CommentBox>
                   <GardenDetailCommentList
                     boardElId={props.boardElId}
                     loginInfo={loginInfo}
                   />
                 </S.CommentBox>
-                {/* 댓글 작성하기 */}
                 <GardenDetailCommentWrite />
               </S.ContentsBox>
             </S.RightWrapper>

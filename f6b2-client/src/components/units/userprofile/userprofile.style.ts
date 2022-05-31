@@ -177,19 +177,19 @@ export const PMyGardenCount = styled.p`
 `;
 
 export const IconMyGarden = styled(BsHouseDoor)`
-  color: ${(props) => (props.istab === 'mygarden' ? '#ffb950' : 'black')};
+  color: ${(props: any) => (props.istab === 'mygarden' ? '#ffb950' : 'black')};
   font-size: 25px;
   cursor: pointer;
 `;
 
 export const IconMyHive = styled(BiHive)`
-  color: ${(props) => (props.istab === 'myhive' ? '#ffb950' : 'black')};
+  color: ${(props: any) => (props.istab === 'myhive' ? '#ffb950' : 'black')};
   font-size: 25px;
   cursor: pointer;
 `;
 
 export const IconMyCharge = styled(AiOutlineFire)`
-  color: ${(props) => (props.istab === 'mycharge' ? '#ffb950' : 'black')};
+  color: ${(props: any) => (props.istab === 'mycharge' ? '#ffb950' : 'black')};
   font-size: 25px;
   cursor: pointer;
 `;
@@ -212,7 +212,7 @@ export const SliderTab = styled(Slider)`
   }
   .slick-next:before {
     color: black; // arrow 색상 변경
-    font-size: 25px; // arrow 크기 변경
+    font-size: 25px; // arrow
   }
 `;
 

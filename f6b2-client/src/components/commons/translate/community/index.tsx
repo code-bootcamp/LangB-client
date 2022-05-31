@@ -1,14 +1,14 @@
-import { useQuery } from "@apollo/client";
-import styled from "@emotion/styled";
-import { useRouter } from "next/router";
-import { useState } from "react";
-import { Translate, Translator } from "react-auto-translate";
-import { useRecoilState } from "recoil";
-import { getLangCode } from "../../../../commons/libraries/utils";
-import { userInfoState } from "../../../../commons/store";
-import { FETCH_COMMUNITY_BOARD } from "../../queries";
+import { useQuery } from '@apollo/client';
+import styled from '@emotion/styled';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
+import { Translate, Translator } from 'react-auto-translate';
+import { useRecoilState } from 'recoil';
+import { getLangCode } from '../../../../commons/libraries/utils';
+import { userInfoState } from '../../../../commons/store';
+import { FETCH_COMMUNITY_BOARD } from '../../queries';
 
-export default function TranslateCommunity(props) {
+export default function TranslateCommunity(props: any) {
   const [userInfo] = useRecoilState(userInfoState);
   const router = useRouter();
   const { data: commuData } = useQuery(FETCH_COMMUNITY_BOARD, {
@@ -37,7 +37,7 @@ export default function TranslateCommunity(props) {
   return (
     <Wrapper>
       <Translator
-        googleApiKey="AIzaSyBwuUqwo_UbRpvYykdibLlA_luu47IXG5M"
+        googleApiKey='AIzaSyBwuUqwo_UbRpvYykdibLlA_luu47IXG5M'
         from={getLangCode(commuData?.fetchCommunityBoard.writer.myLang)} // 작성자 mylang
         to={getLangCode(userInfo?.myLang)} // 로그인유저 mylang
       >

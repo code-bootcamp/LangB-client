@@ -57,6 +57,7 @@ export default function GardenCommentWrite(props: any) {
     };
 
     if (comment !== '') {
+      // @ts-ignore
       myVariables.updateCommentInput.content = comment;
     }
 
@@ -79,14 +80,12 @@ export default function GardenCommentWrite(props: any) {
     }
   };
 
-  // 1. 이미지 URL을 받기 위한 set 선언
   const [fileUrls, setFileUrls] = useState('');
-  // 2. 업로드 컴포넌트에 넘겨줄 콜백 함수(?)
+
   const onChangeFileUrls = (fileUrl: string) => {
     setFileUrls(fileUrl);
   };
 
-  // 비디오 올리기
   const [videoUrls, setVideoUrls] = useState('');
   const onChangeVideoUrls = (fileUrl: string) => {
     setVideoUrls(fileUrl);

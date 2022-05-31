@@ -15,7 +15,6 @@ export default function ChargeStationUI(props: IChargeStationUI) {
     <Charge.WrapperCol>
       <Charge.H2Title>Charging Station</Charge.H2Title>
       <Charge.WrapperRowDetail>
-        {/* 왼쪽 박스 */}
         <Charge.WrapperColDetail>
           <Charge.WrapperColCurPoint>
             <Charge.PCurPointNum>

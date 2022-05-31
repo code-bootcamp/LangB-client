@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 
 export const CommentWriteBox = styled.main`
   width: 100%;
@@ -7,9 +7,6 @@ export const CommentWriteBox = styled.main`
   justify-content: center;
   align-items: center;
   margin-top: 20px;
-
-  // test
-  /* background-color: gray; */
 `;
 
 export const CommentWriteProfile = styled.img`
@@ -18,7 +15,6 @@ export const CommentWriteProfile = styled.img`
   border-radius: 50px;
   margin-right: 15px;
 
-  //test
   background-color: gray;
 `;
 

@@ -1,4 +1,3 @@
-import { string } from 'prop-types';
 import { ChangeEvent } from 'react';
 import { IUser } from '../../../commons/types/generated/types';
 

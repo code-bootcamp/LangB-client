@@ -1,15 +1,15 @@
-import { useMutation, useQuery } from "@apollo/client";
-import { useState } from "react";
-import { useRecoilState } from "recoil";
-import { userInfoState } from "../../../../../commons/store";
+import { useMutation, useQuery } from '@apollo/client';
+import { useState } from 'react';
+import { useRecoilState } from 'recoil';
+import { userInfoState } from '../../../../../commons/store';
 import {
   DELETE_COMMENT,
   FETCH_COMMENTS,
   FETCH_SAVED_BOARDS,
   LIKE_COMMENT,
-} from "../../../../commons/queries";
-import { FETCH_MYLIKED_COMMENT } from "../../../garden/comment/list/GrdenCommentList.queries";
-import GardenDetailCommentListUI from "./GardenDetailCommentList.presenter";
+} from '../../../../commons/queries';
+import { FETCH_MYLIKED_COMMENT } from '../../../garden/comment/list/GrdenCommentList.queries';
+import GardenDetailCommentListUI from './GardenDetailCommentList.presenter';
 
 export default function GardenDetailCommentList(props: any) {
   const [loginUserInfo] = useRecoilState(userInfoState);
@@ -27,7 +27,7 @@ export default function GardenDetailCommentList(props: any) {
   const [deleteComment] = useMutation(DELETE_COMMENT);
   const [loginInfo] = useRecoilState(userInfoState);
 
-  const onClickDeleteComment = async (event) => {
+  const onClickDeleteComment = async (event: any) => {
     try {
       await deleteComment({
         variables: {
@@ -50,7 +50,7 @@ export default function GardenDetailCommentList(props: any) {
   const [commentEditVal, setCommentEditVal] = useState([false]);
   // 댓글수정버튼 클릭 시, 수정창이 보인다
 
-  const commentEditBtn = (index) => (event) => {
+  const commentEditBtn = (index: any) => (event: any) => {
     const newCommentEditVal = [...commentEditVal];
     newCommentEditVal[index] = !commentEditVal[index];
     setCommentEditVal(newCommentEditVal);
@@ -58,7 +58,7 @@ export default function GardenDetailCommentList(props: any) {
 
   // 댓글 좋아요
   const [likeComment] = useMutation(LIKE_COMMENT);
-  const onClickCommentLike = async (event) => {
+  const onClickCommentLike = async (event: any) => {
     try {
       await likeComment({
         variables: {

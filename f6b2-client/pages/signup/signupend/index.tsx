@@ -36,6 +36,7 @@ export default function SignUpComplete() {
 
   useEffect(() => {
     lottie.loadAnimation({
+      // @ts-ignore
       container: likecontainer.current,
       renderer: 'svg',
       loop: false,
@@ -50,7 +51,10 @@ export default function SignUpComplete() {
 
   return (
     <WrapperCol>
-      <Welcome ref={likecontainer}></Welcome>
+      <Welcome
+        // @ts-ignore
+        ref={likecontainer}
+      ></Welcome>
       <ButtonMovetoSignin onClick={onClickSignin}>Sign In</ButtonMovetoSignin>
     </WrapperCol>
   );
