@@ -1,21 +1,5 @@
 import styled from '@emotion/styled';
 
-// 순서
-// display
-// list-style
-// position
-// float
-// clear
-// width/height
-// padding/margin
-// border/background
-// color/font
-// text-decoration
-// text-align/vertical-align
-// white-space
-// other text
-// content
-
 export const WrapperDiv = styled.div`
   display: flex;
   flex-direction: column;

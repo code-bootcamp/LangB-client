@@ -4,6 +4,8 @@ export interface IArchive {
   data: {
     fetchSavedBoards: Array<ISave>;
   };
+  isToken: string;
+  onClickLogin: () => void;
 }
 
 export interface IArchiveItem {

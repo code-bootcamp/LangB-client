@@ -7,9 +7,8 @@ import { FETCH_USER_LOGGED_IN, LOG_OUT, USE_POINT } from '../../queries';
 import { CgBee } from 'react-icons/cg';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { BsFlower1 } from 'react-icons/bs';
-import { Box, Modal } from '@mui/material';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -188,7 +187,6 @@ export default function LayoutHeader() {
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
-  // save login user data in global state
   useEffect(() => {
     setUserInfo(data?.fetchUser);
   }, [data]);
@@ -217,7 +215,6 @@ export default function LayoutHeader() {
     router.push('/charge');
   };
 
-  // material Ui handleing fuc
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -256,7 +253,11 @@ export default function LayoutHeader() {
         <WrapperHeaderInfo>
           {isToken ? (
             <>
-              <MyBee style={{ margin: '5' }} onClick={handleMenu} />
+              <MyBee
+                style={{ margin: '5' }}
+                // @ts-ignore
+                onClick={handleMenu}
+              />
               <Menu
                 id='menu-appbar'
                 anchorEl={anchorEl}
@@ -305,26 +306,3 @@ export default function LayoutHeader() {
     </Wrapper>
   );
 }
-
-// // 이 페이지는 서버사이드 렌더링 할래!!
-// export const getServerSideProps = async (context) => {
-//   // 데이터를 요청할 것!!!
-//   // const {data} = use
-//   const result = await request(
-//     'https://backend06.codebootcamp.co.kr/graphql',
-//     FETCH_BOARD,
-//     {
-//       boardId: context.query.boardId,
-//     }
-//   );
-
-//   return {
-//     props: {
-//       myboardData: {
-//         title: result.fetchBoard.title,
-//         contents: result.fetchBoard.contents,
-//         images: result.fetchBoard.images,
-//       },
-//     },
-//   };
-// };

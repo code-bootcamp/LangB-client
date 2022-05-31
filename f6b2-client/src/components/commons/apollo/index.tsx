@@ -10,7 +10,6 @@ import { useRecoilState, useRecoilValueLoadable } from 'recoil';
 import {
   accessTokenState,
   restoreAccessTokenLoadable,
-  // userInfoState,
 } from '../../../commons/store';
 import { onError } from '@apollo/client/link/error';
 import { getAccessToken } from '../../../commons/libraries/getAccessToken';
@@ -33,9 +32,7 @@ export default function ApolloConfig(props: IApolloProps) {
     // 1-1. 에러를 캐치
     if (graphQLErrors) {
       for (const err of graphQLErrors) {
-        // 1-2 해당 에러가 토큰만료 에러인가 체크
         if (err.extensions.code === 'UNAUTHENTICATED') {
-          // 2-1. 리프레시 토큰으로 엑세스 토큰을 재발급 받기
           getAccessToken().then((newAccessToken) => {
             setAccessToken(newAccessToken);
 
@@ -45,8 +42,6 @@ export default function ApolloConfig(props: IApolloProps) {
                 Authorization: `Bearer ${newAccessToken}`,
               },
             });
-
-            // 3-2 변경된 operation 재요청하기
             return forward(operation);
           });
         }
@@ -55,8 +50,6 @@ export default function ApolloConfig(props: IApolloProps) {
   });
 
   const uploadLink = createUploadLink({
-    // uri: 'hiosi123.shop/graphql',
-    // uri: 'https://team04backend.shop/graphql',
     uri: 'https://langbee.shop/graphql',
     headers: { Authorization: `Bearer ${accessToken}` },
     credentials: 'include',

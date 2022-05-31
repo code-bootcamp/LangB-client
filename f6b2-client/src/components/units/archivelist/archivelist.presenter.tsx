@@ -7,7 +7,6 @@ import { useEffect, useRef } from 'react';
 import lottie from 'lottie-web';
 
 export default function ArchiveUI(props: IArchive) {
-  // react slick setting
   const settings = {
     dots: true,
     infinite: false,
@@ -22,6 +21,7 @@ export default function ArchiveUI(props: IArchive) {
 
   useEffect(() => {
     lottie.loadAnimation({
+      // @ts-ignore
       container: bee2Container.current,
       renderer: 'svg',
       loop: true,
@@ -62,7 +62,10 @@ export default function ArchiveUI(props: IArchive) {
       ) : (
         <Archive.WapperLogin>
           <Archive.WapperLottie>
-            <div ref={bee2Container}></div>
+            <div
+              // @ts-ignore
+              ref={bee2Container}
+            ></div>
           </Archive.WapperLottie>
           <Archive.MoveToLogin onClick={props.onClickLogin}>
             Log in

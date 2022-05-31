@@ -1,13 +1,14 @@
 import { useState } from 'react';
-// import VideoUpload from '../../../commons/videoupload';
 import VideoRecordUI from './videorecord.presenter';
 import { v4 as uuidv4 } from 'uuid';
+import { IGardenWriteVideo } from '../GardenWrite.type';
 
-export default function VideoRecord(props) {
+export default function VideoRecord(props: IGardenWriteVideo) {
   const [recordUrls, setRecordUrls] = useState([]);
 
   const onRecordingComplete = (videoBlob: Blob) => {
     const file = new File([videoBlob], `${uuidv4()}.webm`);
+    // @ts-ignore
     setRecordUrls(file);
   };
 

@@ -1,5 +1,9 @@
 import styled from '@emotion/styled';
-import Hexagon from 'react-hexagon';
+
+interface IChargeStationStyle {
+  isSelect: any;
+  isClicked: any;
+}
 
 export const WrapperCol = styled.div`
   display: flex;
@@ -174,8 +178,10 @@ export const BtnPoint = styled.button`
   position: relative;
   width: 100px;
   height: 55px;
-  background: ${(props) => (props.isClicked ? '#ffb950' : '#ffffff')};
-  border: ${(props) => (props.isClicked ? '#dbdbdb' : '#dfa349')};
+  background: ${(props: IChargeStationStyle) =>
+    props.isClicked ? '#ffb950' : '#ffffff'};
+  border: ${(props: IChargeStationStyle) =>
+    props.isClicked ? '#dbdbdb' : '#dfa349'};
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
   font-style: normal;
   font-weight: 700;
@@ -268,25 +274,10 @@ export const BtnCharge = styled.button`
 `;
 
 /* prettier-ignore */
-export const BtnHexagon = styled(Hexagon)`
-  width: 80px;
-  height: 90px;
-  margin-right: 5px;
-  background-image: url(${(props) => props.isClicked ? props.btnname + '.svg' : props.btnname + '_c.svg'});
-
-  /* background-image: url(${(props) => props.btnname + '.svg'}); */
-
-  :hover {
-    background-image: url(${(props) => props.btnname + '_c.svg'});
-    stroke: #e0a54d;
-  }
-`;
-
-/* prettier-ignore */
 export const BtnHexa = styled.button`
   width: 80px;
   height: 89px;
-  background-color:transparent;
+  background-color: transparent;
   padding: 0px;
   background-repeat: no-repeat;
   background-size: cover;
@@ -296,8 +287,8 @@ export const BtnHexa = styled.button`
   font-size: 15px;
   line-height: 22px;
   text-align: center;
-  background-image: url(${(props) => props.isClicked ? '/image/point_b.svg' : '/image/point_a.svg'});
-  color: ${(props) => props.isClicked ? 'white' : 'black'};
+  background-image: url(${(props : IChargeStationStyle) => props.isClicked ? '/image/point_b.svg' : '/image/point_a.svg'});
+  color: ${(props) => (props.isClicked ? 'white' : 'black')};
 
   :hover {
     background-image: url('/image/point_b.svg');
@@ -319,15 +310,10 @@ export const BtnHexaCharge = styled.button`
   font-size: 15px;
   line-height: 22px;
   text-align: center;
-  background-image: url(${(props) => props.isSelect ? '/image/charge_b.svg' : '/image/charge_a.svg'});
-  color: ${(props) => props.isSelect ? 'white' : 'black'};
+  background-image: url(${(props: IChargeStationStyle) => props.isSelect ? '/image/charge_b.svg' : '/image/charge_a.svg'});
+  
+  color: ${(props : IChargeStationStyle) => props.isSelect ? 'white' : 'black'};
 
-
-
-  /* :hover {
-    background-image: url('/image/charge_b.svg');
-    color: white;
-  } */
 `;
 
 export const SpanChargeText = styled.span`

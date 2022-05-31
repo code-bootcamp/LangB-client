@@ -1,5 +1,9 @@
 import styled from '@emotion/styled';
-import { BsThreeDotsVertical, BsThreeDots } from 'react-icons/bs';
+import { BsThreeDots } from 'react-icons/bs';
+
+interface IUserChargeStyle {
+  status: string;
+}
 
 export const WrapperColStart = styled.div`
   display: flex;
@@ -84,7 +88,8 @@ export const PPoint = styled.p`
   font-size: 12px;
   text-align: right;
   padding-right: 10px;
-  color: ${(props) => (props.status === 'CANCELLED' ? 'red' : 'black')};
+  color: ${(props: IUserChargeStyle) =>
+    props.status === 'CANCELLED' ? 'red' : 'black'};
   margin: 0px;
 `;
 
@@ -93,7 +98,8 @@ export const PPrice = styled.p`
   font-size: 12px;
   text-align: right;
   padding-right: 10px;
-  color: ${(props) => (props.status === 'CANCELLED' ? 'red' : 'black')};
+  color: ${(props: IUserChargeStyle) =>
+    props.status === 'CANCELLED' ? 'red' : 'black'};
   margin: 0px;
 `;
 

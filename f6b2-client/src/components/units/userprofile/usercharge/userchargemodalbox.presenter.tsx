@@ -49,12 +49,17 @@ export const ButtonCancle = styled.button`
   line-height: 17px;
   text-align: center;
 `;
+interface ICancleModalBox {
+  impUid: string;
+  price: number;
+  handleClose: () => void;
+}
 
-export default function CancleModalBox(props) {
+export default function CancleModalBox(props: ICancleModalBox) {
   const [cancle] = useMutation(CANCLE_RECEIPT);
   const onClickCancle = async () => {
     try {
-      const result = await cancle({
+      await cancle({
         variables: {
           impUid: props?.impUid,
           price: props?.price,

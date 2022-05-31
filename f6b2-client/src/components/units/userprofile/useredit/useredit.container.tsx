@@ -7,13 +7,17 @@ import UserEditUI from './useredit.presenter';
 import { UPDATE_USER } from './useredit.queries';
 import { SelectChangeEvent } from '@mui/material/Select';
 
-export default function UserEditContainer(props) {
+interface IUserProfileEdit {
+  onClose: () => void;
+  user: any;
+}
+
+export default function UserEditContainer(props: IUserProfileEdit) {
   const [userInfo] = useRecoilState(userInfoState);
   const [updateUser] = useMutation(UPDATE_USER);
 
   const [isName, setIsName] = useState('');
   const [isNewLang, setIsNewLang] = useState('');
-  const [isRegion, setIsRegion] = useState('');
   const [isCurPW, setIsCurPW] = useState('');
   const [isNewPW, setIsNewPW] = useState('');
   const [fileUrls, setFileUrls] = useState('');
@@ -32,19 +36,19 @@ export default function UserEditContainer(props) {
     setFileUrls(fileUrl);
   };
 
-  const handleChangeRegion = (event: SelectChangeEvent) => {
-    setIsRegion(event.target.value as string);
-  };
-
   const onChangeName = (event: SelectChangeEvent) => {
     setIsName(event.target.value as string);
   };
 
-  const onChangeCurPw = (event) => {
+  const onChangeCurPw = (event: {
+    target: { value: React.SetStateAction<string> };
+  }) => {
     setIsCurPW(event.target.value);
   };
 
-  const onChangeNewPw = (event) => {
+  const onChangeNewPw = (event: {
+    target: { value: React.SetStateAction<string> };
+  }) => {
     setIsNewPW(event.target.value);
   };
 
@@ -56,7 +60,6 @@ export default function UserEditContainer(props) {
           updateUserInput: {
             name: isName,
             newLang: isNewLang,
-            // currentRegion: isRegion,
             password: isNewPW,
             image: fileUrls,
           },
@@ -80,7 +83,6 @@ export default function UserEditContainer(props) {
     <UserEditUI
       isNewLang={isNewLang}
       handleChange={handleChange}
-      handleChangeRegion={handleChangeRegion}
       onChangeName={onChangeName}
       onClickUpdate={onClickUpdate}
       onChangeCurPw={onChangeCurPw}

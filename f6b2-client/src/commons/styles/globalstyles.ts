@@ -6,16 +6,5 @@ export const globalStyles = css`
     box-sizing: border-box;
     font-size: 16px;
     font-family: 'Noto Sans', sans-serif;
-    /* font-family: 'jintaek'  다운받은거 적용할때 */
   }
-  // 나만의 폰트
-  /* @font-face {
-    font-family: 'Gamja Flower';
-    src: url('/font/Gamja_Flower/GamjaFlower-Regular.ttf');
-  }
-
-  @font-face {
-    font-family: 'Jua';
-    src: url('/font/Jua/Jua-Regular.ttf');
-  } */
 `;
